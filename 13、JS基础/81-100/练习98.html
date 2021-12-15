@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多选框的练习</title>
+    <script>
+        window.onload = function () {
+            let allBtn = document.getElementById("allBtn")
+            let noBtn = document.getElementById("noBtn")
+            let all = document.getElementById('all')
+            let items = document.getElementsByName("items")
+            let revBtn = document.getElementById("revBtn")
+            let sendBtn = document.getElementById("sendBtn")
+            //全选
+           
+            allBtn.onclick = function(){
+                console.log(items[0])
+                for(let i=0;i<items.length;i++){
+                        items[i].checked=true
+                        all.checked=true
+                }
+                
+            }
+            //全不选
+           
+            noBtn.onclick = function(){
+                for(let i=0;i<items.length;i++){
+                        items[i].checked=false
+                        all.checked=false
+                }
+                 
+            } 
+            
+            //反选  
+           
+            revBtn.onclick = function(){
+                all.checked =true
+                for(let i=0;i<items.length;i++){
+                    // if(items[i].checked){
+                    //     items[i].checked=false
+                    // }else{
+                    //     items[i].checked=true
+                    // }
+                    //上面的简便方法
+                    console.log(items[i].checked)
+                    items[i].checked =!items[i].checked
+
+                    if(!items[i].checked){
+                         //首先直接判定为非，  用的和找质数一样的思想，及时反向的思想
+
+                         //只要下面四个有一个未false，直接把上面的全选也设置为false
+                         all.checked=false
+                        //一旦进入判断，则已经有结果，不用在继续执行循环 
+                         
+                }
+   
+                }
+            }
+            //提交
+          
+            sendBtn.onclick = function(){
+                for(let i=0;i<items.length;i++){
+                    if(items[i].checked){
+                        console.log( items[i].value)
+                    }
+                       
+                }
+            } 
+
+            //上面的全选和不选
+          
+             all.onclick = function(){
+                 for(let i=0;i<items.length;i++){
+                   items[i].checked = all.checked
+                   
+                       
+                }
+             }
+
+
+             //完善   要学会用到反向思想
+             for(let i=0; i<items.length;i++){
+                 //这是给每一个选项绑定一个点击函数
+                 items[i].onclick = function(){
+
+                    //首先判定为他状态为true
+                     all.checked =true
+                     for(let j=0; j<items.length;j++){
+                     if(!items[j].checked){
+                         //首先直接判定为非，  用的和找质数一样的思想，及时反向的思想
+
+                         //只要下面四个有一个未false，直接把上面的全选也设置为false
+                         all.checked=false
+                        //一旦进入判断，则已经有结果，不用在继续执行循环 
+                         break
+                         
+                     }
+                     
+                 }
+
+                 };
+                 
+             }
+            
+        }
+    </script>
+</head>
+<body>
+    <form method="POST" action="">
+        你的爱好是什么？<input type="checkbox" id="all" />全选/全不选
+        <br/>
+        <input type="checkbox" name="items" value="足球"/>足球
+        <input type="checkbox" name="items" value="篮球"/>篮球
+        <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+        <input type="checkbox" name="items" value="乒乓球"/>乒乓球
+        <br/>
+        <input type="button" id="allBtn" value="全选"/>
+        <input type="button" id="noBtn" value="全不选"/>
+        <input type="button" id="revBtn" value="反选"/>
+        <input type="button" id="sendBtn" value="提交"/>
+        
+        
+    </form>
+      
+</body>
+</html>

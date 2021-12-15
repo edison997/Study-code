@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>循环遍历加监听</title>
+    </head>
+
+    <body>
+        <button>测试1</button>
+        <button>测试2</button>
+        <button>测试3</button>
+
+
+        <script>
+            let btn = document.querySelectorAll("button")
+
+
+            // for (let i = 0; i < btn.length; i++) {
+            //     btn[i].index = i 
+            //     btn[i].onclick = function () {
+            //         alert("你点击的是" + (this.index+1) + "个")
+            //     }
+            // }
+
+            //利用闭包
+            for (let i = 0; i < btn.length; i++) {
+               (function (i) {
+                   
+                     btn[i].onclick = function () {
+                     alert("你点击的是" + (i+1) + "个")
+                     }
+               })(i)
+            }
+        </script>
+    </body>
+
+</html>

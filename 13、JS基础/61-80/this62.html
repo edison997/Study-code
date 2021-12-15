@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this 的补充</title>
+
+    <script>
+        let name = "全局"
+
+        function fun() {
+            //通过添加this可是使name想在obj 、 obj2、fun的调用者的不同返回不同的name值
+            console.log(this.name)
+        }
+
+        let obj = {
+            name:"sss",
+            sayName:fun
+        }
+
+          let obj2 = {
+            name:"xxx",
+            sayName:fun
+        }
+
+
+        obj2.sayName()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

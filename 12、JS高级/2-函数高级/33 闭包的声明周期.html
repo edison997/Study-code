@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>闭包的声明周期</title>
+    </head>
+
+    <body>
+        <!-- 
+        1.产生：在嵌套内部函数定义执行完成时就产生了（不是调用时）
+        2.死亡：在嵌套的内部函数成为垃圾对象时
+     -->
+        <script>
+            // 1.将函数作为另一个函数的返回值
+            function fn1() {
+                //此时闭包就产生了（函数提升，内部函数对象已经创建了）
+                let a = 3;
+
+                function fn2() {
+                    a++;
+                    console.log(a)
+                }
+                return fn2;
+            }
+            //调用一次外部函数就产生一个闭包
+            let f = fn1(); //这一步就相当于是 let f = fn2 把return的返回值赋值给f
+            f() //就是相当于 调用fn2()
+            f()
+
+            f = null //闭包死亡（包含闭包的函数对象成为了垃圾对象）
+
+            function Timer() {
+                this.s1 = 0;
+                this.s2 = 0;
+                // 箭头函数
+                setInterval(() => this.s1++, 1000);
+                // 普通函数
+                setInterval(function () {
+                    this.s2++;
+                }, 1000);
+            }
+
+            var timer = new Timer();
+
+            setTimeout(() => console.log('s1: ', timer.s1), 3100);
+            setTimeout(() => console.log('s2: ', timer.s2), 3100);
+        </script>
+    </body>
+
+</html>

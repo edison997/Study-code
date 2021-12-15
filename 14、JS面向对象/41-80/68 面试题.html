@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>面试题</title>
+    </head>
+
+    <body>
+        <script>
+            //没有访问到局部变量，没有闭包的产生
+            var name = "The Window"
+            var obj = {
+                name: "My Object",
+                getNamefun: function () {
+                    return function () {
+                        return this.name
+                    }
+                }
+            }
+
+            console.log(obj.getNamefun()()) //The Window
+
+            let f = obj.getNamefun();
+            f();
+
+            // 相当于
+            // let f = function(){
+            //     return this.name 
+            // }
+
+
+            var name1 = "The Window"
+            var obj1 = {
+                name1: "My Object",
+                getNamefun: function () {
+                    var that = this;
+                    return function () {
+                        return that.name1
+                    }
+                }
+            }
+
+            console.log(obj1.getNamefun()()) 
+        </script>
+    </body>
+
+</html>

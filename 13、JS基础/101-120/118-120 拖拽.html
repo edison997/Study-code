@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color:lightgreen;
+            position: absolute;
+        }
+        #box2 {
+             width: 300px;
+            height: 230px;
+            background-color:tomato;
+            position: absolute;
+            left: 500px;
+            top: 500px;
+        }
+
+        #img1 {
+            position: absolute
+        }
+    </style>
+</head>
+<body>
+
+    我是谁你是谁
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <img src="../81-100/img/1.jpg" alt="" id="img1">
+    <script>
+        /* 
+        步骤
+        1.先确定一共有几个事件   onmosuedown onmousemove onomuseup
+        2.在onmousedown事件中绑定onmousemove onomuseup， 而且是在整个页面中
+        3.执行一次后取消事件，直接给null 就行了
+        4.最后解决鼠标位置的问题 
+        5.记住要给元素定位
+
+
+        */
+        let box1 = document.getElementById("box1")
+        let box2 = document.getElementById("box2")
+        let img1 = document.getElementById("img1")
+
+        drog(box1);
+        drog(box2);
+        drog(img1);
+       
+
+
+       /*  box1.onmousedown = function(e){
+
+            //在鼠标点击的时候找到鼠标相对于box的偏移量
+            //box1   offsetLeft ,offsetTop 相对于窗口的偏移量
+            //clientX,clientX鼠标的位置
+            console.log(e.clientX)
+            console.log(e.clientY)
+
+            let ol = e.clientX - box1.offsetLeft;
+            let ot = e.clientY - box1.offsetTop ;
+
+
+            document.onmousemove = function(e){
+                let left = e.clientX-ol;
+                let top = e.clientY-ot;
+
+                box1.style.left = left+"px";
+                box1.style.top = top+"px";
+            };
+
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+                
+            };
+
+            //取消浏览器全选都能拖拽的默认行为
+            return false;
+            
+        } */
+
+
+
+ //给多个绑定拖拽事件  首先定义一个共用的函数， 然后传参就行了
+ //这里又是封装思想的，很好
+            function drog(obj){
+
+            obj.onmousedown = function(e){
+
+            //在鼠标点击的时候找到鼠标相对于box的偏移量
+            //box1   offsetLeft ,offsetTop 相对于窗口的偏移量
+            //clientX,clientX鼠标的位置
+            console.log(e.clientX)
+            console.log(e.clientY)
+
+            let ol = e.clientX - obj.offsetLeft;
+            let ot = e.clientY - obj.offsetTop ;
+
+
+            document.onmousemove = function(e){
+                let left = e.clientX-ol;
+                let top = e.clientY-ot;
+
+                obj.style.left = left+"px";
+                obj.style.top = top+"px";
+            };
+
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+                
+            };
+
+            //取消浏览器全选都能拖拽的默认行为
+            return false;
+            
+        }
+            }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

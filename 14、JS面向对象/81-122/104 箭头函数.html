@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        //箭头函数  简化函数书写
+
+        const fn = ()=> {
+            console.log(111)
+        }
+
+        fn()
+
+
+        function fun(n1,n2){
+            return n1+n2
+        }
+
+        let a = fun(1,2)
+        console.log(a)
+
+
+        //箭头函数的写法
+        const fun2 = (n1,n2) => n1+n2;
+        let b = fun2(5,6)
+        console.log(b)
+
+        //如果参数只要一个，括号都可以省略
+
+        const fun3 = c => c
+        const f = fun3(1)
+        console.log(f)
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>受控组件</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+        
+            class MyTest extends React.Component {
+
+
+                state = {
+                    username:'',
+                    password:''
+                }
+
+
+                changeUsername = (event) => {
+                    console.log(event.target.value)
+                    this.setState({username:event.target.value})
+                }
+
+                changePassword = () => {
+                    this.setState({password:event.target.value})
+                }
+
+                //这里一定要注意要用箭头函数
+                sub = (e)=>{
+                    e.preventDefault() //阻止表单提交
+                    console.log(this)
+                    alert(`${this.state.username}+${this.state.password}`)
+
+                    
+                }
+            
+                render(){
+
+                    return (
+                        <form onSubmit={this.sub} >
+                            用户名：<input onChange={this.changeUsername} name="username" type="text"/>
+                            密 码：<input onChange={this.changePassword} name="password" type="password" />
+                            <button>登录</button>
+                        </form>
+                       
+                    )
+                }
+            }
+       
+            
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

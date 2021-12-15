@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom的增删改</title>
+</head>
+<body>
+     <ul id="city">
+        <li id="bj">北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li id="sz">深圳</li>
+    </ul>
+
+    <div id="btnList">
+        <button id="btn1">添加一个节点</button>
+        <button id="btn2">在北京前面添加一个节点</button>
+        <button id="btn3">替换北京节点</button>
+        <button id="btn4">删除北京和获取html中的代码</button>
+        <button id="btn5">修改北京内的代码</button>
+        <button id="btn6">用innerHTML添加</button>
+    </div>
+
+
+
+    <script>
+        function myClick(btns,fun){
+            let btn = document.getElementById(btns)
+            btn.onclick = fun
+        }
+
+        
+        let city = document.getElementById("city")
+        let bj = document.getElementById("bj")
+
+       
+
+        //添加一个首尔
+        myClick("btn1",function(){
+            //第一，先创建一个元素li
+            let li = document.createElement("li")
+            //第二，创建一个文本节点
+            let a = document.createTextNode("首尔")
+            //第三，把文本节点添加到li中去
+            let shouer = li.appendChild(a)
+            //第四，把li添加到页面上去，再在父节点上添加一个子节点
+            
+            city.appendChild(li)
+          
+        }) 
+
+
+        //将首尔节点添加到北京的前面去
+        myClick("btn2",function(){
+            let li = document.createElement("li")
+            let txt = document.createTextNode("首尔")
+            li.appendChild(txt)
+
+            //这是添加到什么前面去的方法，（新节点，旧节点）
+            city.insertBefore(li,bj)
+            console.log(111)
+        })
+
+        //替换bj节点
+        myClick("btn3",function(){
+            let li = document.createElement("li")
+            let txt = document.createTextNode("首尔")
+            li.appendChild(txt)
+            //这是替换到什么前面去的方法，（新节点，旧节点）
+            city.replaceChild(li,bj)
+        })
+
+        myClick("btn4",function(){
+            // city.removeChild(bj)
+
+            //通过找父节点删除,就不用获取父节点了，常用
+            bj.parentNode.removeChild(bj)
+            console.log(city.innerHTML)
+            console.log(city.innerText)
+        })
+
+        myClick("btn5",function(){
+            bj.innerHTML = "你多吃点"    
+        })
+
+
+        myClick("btn6",function(){
+            //使用innerhtml也可以实现添加
+            // city.innerHTML += "<li>gz</li>"  //不推荐
+
+            //推荐使用，比最上面的那个更加精简一点
+             let li = document.createElement("li")
+             li.innerHTML = "gz"
+             city.appendChild(li)
+            
+            
+        })
+        
+    </script>
+
+</body>
+</html>

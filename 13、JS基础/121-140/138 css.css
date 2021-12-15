@@ -1,0 +1,22 @@
+* {
+margin: 0;
+padding: 0;
+
+}
+
+
+
+.menuSpan {
+    background-color:cadetblue;
+    display: block;
+    height: 30px;
+    width: 200px;
+    border: 1px solid black;
+    cursor: pointer;
+    
+}
+
+.closeDiv {
+    height:25px;
+    overflow:hidden;
+}

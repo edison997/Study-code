@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素的样式</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <button id="btn">点我点我</button>
+
+
+
+    <script>
+        let box1 = document.getElementById("box1")
+        let btn = document.getElementById("btn")
+
+        btn.onclick = function(){
+            console.log(box1.style.width)
+            //只有ie才有，不用
+            // console.log(box1.currentStyle.width)
+
+
+           
+            /* 
+                需要两个参数、
+                1，要获取的元素
+                2，可以传一个伪元素，但是一般传null
+                该方法会返回一个对象，对象中封装了对应的元素
+
+                哪个样式生效，就读取的哪个样式，但是就是不支持ie8
+                通过这两个方法获取的样式是只读的
+            */
+
+            let a =  getComputedStyle(box1,null).width
+            console.log(a)
+            console.log(getComputedStyle(box1,null).backgroundColor)
+            console.log(getStyle(box1,"height"))
+
+
+            //判断兼容性的问题 
+            function getStyle(obj,name) {//obj 就是传是哪个元素  name 就是css的方法，用字符串
+
+                // if(window.getComputedStyle){//就是在window里面找，有没有这个属性，有的话就返回第一个，没有就返回第二个
+                //     return getComputedStyle(obj,null)[name] 
+                // // getComputedStyle(box1,null).name   不能这样写，这样把name写死了，要用上面那个获取的方式
+                // }else{
+                //     return obj.currentStlye[name]
+                // }
+
+                //三元运算，和上面的是一个意思
+                return window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.currentStlye[name];
+               
+            }
+
+            }
+    </script>
+</body>
+</html>

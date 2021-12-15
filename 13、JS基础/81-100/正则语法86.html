@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则语法</title>
+
+
+    <script>
+        // let reg = new RegExp("c","i");  //这个更加灵活
+
+        //语法 let 变量 = /正则表达式/匹配模式  ,和上面那个是一样的
+        reg = /c/i
+
+        console.log(reg.test("absc"))
+
+        // 使用 | 表示或者，只要有其中一个就表示true
+        reg = /a|b/
+        console.log(reg.test("ac"))
+
+        // 创建爱你一个正则表达式检查字符串中是否含有字母,
+        //[]这个也是表示或者的意思
+
+        reg = /[ab]/
+        //表示任意的小写字母
+        /* 
+        [a-z]任意小写字母
+        [A-Z]任意大写字母
+        [A-z]任意大小写字母 
+        
+        */
+        reg2 = /[a-z]/
+        console.log(reg.test("dsdsdb"))
+        console.log(reg2.test("sdsad"))
+        
+
+        //^ 除了,除了ab都返回true
+        reg = /[^ab]/
+        console.log(reg.test("sss"))
+     
+        reg = /[0-9]/
+        console.log(reg.test(111))
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

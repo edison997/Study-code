@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>补充</title>
+</head>
+<body>
+    <script>
+        console.log(Object)
+        console.log(Object.prototype)
+        console.log(Object.prototype.__proto__)
+        function Fn() { 
+            this.test1 = function (){
+                console.log("test1")
+            }
+         }
+
+         //prototype是object的实例，所以他上面都有__proto__
+         console.log(Fn.prototype.__proto__)
+
+         Fn.prototype.test2 = function (){
+             console.log("test2")
+         }
+
+         let fn = new Fn();
+
+         fn.test1();
+         fn.test2();
+        //  fn.test3();
+        console.log(fn.toString())
+        console.log(fn.test3)
+      
+     /* 
+     1.函数的显示原型指向的对象：默认的空的object实例对象（但是object不满足）
+      */
+       
+        console.log(Fn.prototype instanceof Object)
+        console.log(Object.prototype instanceof Object)
+        console.log(Function.prototype instanceof Object)
+
+    /* 
+    2.所有函数都是Function的实例（包含 Function）
+
+    */     
+
+         console.log(Function.prototype === Function.__proto__)
+         console.log(Object.prototype.__proto__)  //原型链的尽头就是object的__Proto__,为Null
+    </script>
+</body>
+</html>

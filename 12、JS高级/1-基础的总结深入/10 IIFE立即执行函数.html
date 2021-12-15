@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+</head>
+<body>
+    <script>
+        /* 
+        1. 全称 Immediately Invoked Function Expression
+        2.作用
+            -隐藏实现
+            -不会污染全局命名空间
+            -用来编写js模块
+        */
+       
+        (function(){//匿名函数自调用，外部是不蹦调用到变量a的
+            let a = 3;
+            console.log(a+3);
+        })();
+
+        let a = 4;
+        console.log(a);
+
+
+        (function(){
+            let c = 5;
+            function test(){
+                console.log(c);
+            };
+
+            function test2(){
+                console.log(c+6);
+            }
+            window.$ = function(){
+                return {
+                    test:test, //这里两个名字要一样
+                    test2:test2
+                }
+            }
+        })();
+
+        //让window暴露一个函数，然后把函数存在对象里面，进行调用，不暴露的话，就不能拿到里面的函数值
+        $().test();
+
+        $().test2()
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数的修改</title>
+    <script>
+
+        function Person(name,age,gender){
+            this.name = name,
+            this.age = age,
+            this.gender = gender,
+
+            //在对象中添加一个方法
+            // this.sayName = function(){
+            //     alert("hello:"+this.name)
+            // }
+
+            //这样只会创建一次，上边那个就会使用多少次就创建多少次
+            this.sayName = fun
+
+        }
+        
+        //直接在全局作用域下定义一个函数，优化性能 
+        //将函数定义到全局作用域，会污染全局作用域的命名空间
+        //而且在全局作用域下不安全
+        function fun(){
+            alert("hello:" +this.name)
+        }
+        //创建一个Person实例
+        let p = new Person("xxx",12,"nv")
+        let p1 = new Person("zzz",32,"nv")
+
+        console.log(p)
+        p.sayName()
+        p1.sayName()
+
+        
+        //如果不是在全局作用域下面定义的函数，下面就是fasle，因为每次的调佣都是一个新的对象
+        console.log(p.sayName == p1.sayName)
+
+
+
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>闭包</title>
+    </head>
+
+    <body>
+        <script>
+            //闭包 （closure）指有权访问另一个函数作用域中的变量的函数。
+            //内部访问外部函数的变量
+            //闭包延伸了变量的的作用范围
+
+            function fn() {
+                let a = 3;
+                // function fn2(){
+                //     console.log(a)
+                // }
+                // return fn2;
+
+                //简便写法
+                return function () {
+                    console.log(a)
+                }
+            }
+
+            //这样就可以直接调用内部函数
+            let f = fn()
+            f()
+
+            //上面f就相当于是
+            /* 
+            let f = function fn2(){
+                        console.log(a)
+                    }
+            
+            let f = function () {
+                    console.log(a)
+                    }
+            */
+        </script>
+    </body>
+
+</html>

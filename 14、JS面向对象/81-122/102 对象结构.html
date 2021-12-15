@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象结构赋值</title>
+</head>
+<body>
+    <script >
+        //对象结构允许我们使用变量的名字匹配对象的属性  匹配成功将对象属性赋值给变量
+
+        let p = {name:'zs',age:20,gender:"nv"};
+
+        let {name,age,gender} = p;
+        console.log(name)
+        console.log(age)
+        console.log(gender)
+
+
+        //name只是属性值，n才是真正的变量
+        let {name:n} = p;
+        console.log(n)
+    </script>
+</body>
+</html>

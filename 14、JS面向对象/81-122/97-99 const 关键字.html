@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const</title>
+</head>
+<body>
+    <script >
+        /* const 
+            -常量声明关键字也是具有块级作用域 
+            -声明后就必须赋值，不然就会报错
+            -常量赋值后不能更改
+        */
+        
+        if(true){
+            const a = 10 ;
+           
+            if(true){
+                const a = 20;
+                console.log(a)
+            }
+            console.log(a)
+        }
+        // console.log(a)
+
+        //不能修改常量的值
+        // const p = 3
+        // p = 3
+
+
+        const arr = [1,2]
+        arr[0] = 11;
+        arr[1] = 22;
+        console.log(arr);
+
+        //不能这样赋值，因为这样改变了arr 的内存地址
+        // arr = [a,b];
+    </script>
+</body>
+</html>

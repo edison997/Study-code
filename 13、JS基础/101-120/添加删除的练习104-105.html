@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加删除的练习</title>
+    <script>
+
+        //删除的函数，使他在想调用的时候都可以调用
+        function delA(){
+                    console.log(this)
+                    let tr = this.parentNode.parentNode
+                    // let name = tr.getElementsByTagName("td")[0].innerHTML
+                    // let name = tr.children[0].innerHTML
+
+                    //只能删除第一个，还有一个querySelectorAll  查找所有的
+                    let name = tr.querySelector("td").innerHTML
+                    
+                    console.log(name)
+
+                    
+                    d = confirm("确认删除"+name+"吗")
+                    console.log(d) //点击取消返回false，点击确定返回true
+
+                    if(d){//如果他是真，也就是点击确定按钮
+                         tr.parentNode.removeChild(tr)
+                    }
+                   
+                }
+
+
+
+                
+        // return false 可以去下a标签跳转的默认行为，也可以在herf上面添加一个 javascript:;
+        window.onload = function(){
+            let btn = document.getElementsByTagName("button")
+            for(let i=0;i<btn.length;i++){
+                
+                //delA 不需要加括号，因为是要赋值对象，而不是调用方法
+                btn[i].onclick = delA
+
+            }
+
+
+
+            //添加
+            let add = document.getElementById("add")
+
+        //     add.onclick = function(){
+        //         //获取input的值
+        //         let nm = document.getElementById("nm").value
+        //         let em = document.getElementById("em").value
+        //         let sa = document.getElementById("sa").value
+
+
+        //         //创建tr 和 td
+        //         let tr = document.createElement("tr")
+        //         let nmtd = document.createElement("td")
+        //         let emtd = document.createElement("td")
+        //         let satd = document.createElement("td")
+        //         let deltd = document.createElement("td")
+
+        //         //创建td的子元素，然后添加到td上去
+        //         let btn = document.createElement("button")
+        //         deltd.appendChild(btn)
+
+        //        //把td元素添加到tr
+        //         tr.appendChild(nmtd)
+        //         tr.appendChild(emtd)
+        //         tr.appendChild(satd)
+        //         tr.appendChild(deltd)
+        //        //创建文本节点
+        //         let nmt = document.createTextNode(nm)
+        //         let emt = document.createTextNode(em)
+        //         let sat = document.createTextNode(sa)
+        //         let delt = document.createTextNode("Delete")
+        //         //把文本节点添加到td里面去
+        //         nmtd.appendChild(nmt)
+        //         emtd.appendChild(emt)
+        //         satd.appendChild(sat)
+        //         btn.appendChild(delt)
+
+        //         //给button添加点击函数,再次给新创建的tr的button绑定下点击删除事件 ， 如果不绑定，上面的额循环是不能循环到新创建的tr的
+        //         //这里和上面一样，都是赋值对象，而不是调用方法
+        //        btn.onclick = delA
+               
+
+        //         let employeeTable = document.getElementById("employeeTable")
+        //         let tbody = employeeTable.getElementsByTagName("tbody")[0]
+                
+        //         tbody.appendChild(tr)
+        // }
+
+
+
+        //添加的简化方法  利用好innerHTML实现的代码简化
+
+        add.onclick = function (){
+            let tr = document.createElement("tr")
+            //   获取input的值
+            let nm = document.getElementById("nm").value
+            let em = document.getElementById("em").value
+            let sa = document.getElementById("sa").value
+            tr.innerHTML = "<td>"+nm+"</td>"+
+                        "<td>"+em+"</td>"+
+                        "<td>"+sa+"</td>"+
+                        "<td><button>delete</button></td>"
+            //再次强调，getElements  最后面一定要加上[0] 才能使用，因为他是类数组
+            let btn = tr.getElementsByTagName("button")[0]
+
+            //要再给新增的再次绑定事件
+            btn.onclick = delA
+
+        
+            let employeeTable = document.getElementById("employeeTable")
+            let tbody = employeeTable.getElementsByTagName("tbody")[0]
+            
+            tbody.appendChild(tr)                
+        }
+        
+
+    }
+    </script>
+</head>
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2.com</td>
+            <td>1000</td>
+            <td><button>delete</button></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2.com</td>
+            <td>1000</td>
+            <td><button>delete</button></td>
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <td>name:</td>
+            <td><input type="text" name="" id="nm"></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" name="" id="em"></td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td><input type="text" name="" id="sa"></td>
+        </tr>
+    </table>
+    <button id="add">提交</button>
+
+</body>
+</html>

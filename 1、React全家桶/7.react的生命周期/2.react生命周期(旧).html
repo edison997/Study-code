@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>生命周期</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            //生命周期回调函数===生命周期钩子函数===生命周期函数===生命周期钩子   都是代表的一个意思
+            class MyTest extends React.Component {
+                
+                constructor(props){
+                    console.log("constructor")
+                    super(props);
+                    this.state = {
+                        count:0
+                    }
+                }
+
+                add = () => {
+                    let {count} = this.state
+
+                    this.setState({count:count+1})
+                }
+                // 清除所有
+                clear = () => {
+                    ReactDOM.unmountComponentAtNode(document.getElementById('box'))
+                    
+                }
+                //强制更新
+                force = () => {
+                    //虽然阀门关闭了，但是如果你多次点击添加按键，强制刷新后的数据依然会返回到页面
+                    this.forceUpdate()
+                }
+
+                //将要被挂在时
+                UNSAFE_componentWillMount(){
+                    console.log('componentWillMount')
+                }
+
+                //组件挂在完毕的钩子
+                componentDidMount(){
+                    console.log('componentDidMount')
+                   
+                }
+
+
+                //组件将要卸载时
+                componentWillUnmount(){
+                    console.log('componentWillUnmount')
+                }
+                
+
+                //控制组件跟更新的阀门（可以不写，默认为真，   返回为真才能进行下一步，返回为false就不能进行渲染）
+                shouldComponentUpdate(){
+                    console.log("shouldComponentUpdate")
+                    return false
+                }
+
+
+                //组件将要被更新时
+                UNSAFE_componentWillUpdate(){
+                    console.log('componentWillUpdate')
+                }
+
+                //组件更新完毕的
+                 componentDidUpdate(){
+                    console.log('componentDidUpdate')
+                 }
+
+
+
+
+                //render 会被调用1+n次    state的状态改变一次，他就会调用一次
+                render(){
+                    console.log("render")
+                    return (
+                        <div>
+                            <h1>当前和为：{this.state.count}</h1>
+                            <button onClick={this.add}>点我+1</button>
+                            <button onClick={this.clear}>清除</button>
+                            <button onClick={this.force}>强制更新</button>
+                        </div>
+                    )
+                }
+            
+            }
+
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

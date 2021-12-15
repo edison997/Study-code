@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this的代码</title>
+    <script>
+        function fun(a,b){
+            console.log("a="+a,"b="+b)
+            console.log(this.name)
+        }
+
+        // fun (123,456)
+
+        let obj = {
+            name:"s",
+            sayName:fun
+        }
+
+         let obj2 = {
+            name:"sssss",
+            sayName:fun
+        }
+
+        let name = "你好啊" //这里如果使用fun（）调用的话window就直接指向全局的name
+
+        // console.log(obj.sayName == fun)
+        //satName就是fun
+        //obj2.sayname是对象的里的方法。 this的指向就是obj2的这对象
+        // obj2.sayName();
+
+        //fun()就是等同于window.fun(),所以this的指向就是window
+        fun()
+
+
+        
+
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

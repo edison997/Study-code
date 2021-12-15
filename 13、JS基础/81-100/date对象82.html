@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date对象</title>
+    <script>
+        //date对象
+
+        //如果直接使用构造函数创建一个date对象，则会封装当前代码执行时间
+        let d = new Date()
+        console.log(d)
+
+        let d2 = new Date("12/03/2020")
+        let date = d2.getDate()
+        let day = d2.getDay()
+        let mon = d2.getMonth()
+        let year = d2.getFullYear()
+        let time = d2.getTime()
+        console.log(d2)
+        //获取几号
+        console.log(date)
+        //获取周几 0 是周日
+        console.log(day)
+        //获取月份 0 是一月
+        console.log(mon)
+
+        console.log(year)
+        //时间戳，1970.1.1 0时0分0秒 到指定时间的毫秒数，好换算。
+        //计算机在底层保存的格式都是这样的
+        console.log(time)
+
+        let d3 = new Date("01/01/1970 0:0:0")
+        t = d3.getTime()
+        console.log(t)
+
+
+
+        //利用时间戳来测试代码执行的性能
+        //获取当前时间戳
+         let start = Date.now()
+         for (let i=0; i<1000;i++){
+             console.log(i)
+         }
+
+         let end = Date.now()
+
+         console.log(end-start)
+         
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

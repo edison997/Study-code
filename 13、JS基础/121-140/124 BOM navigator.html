@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <script>
+        /* 
+        BOM
+        -浏览器对象模型
+        -通过bom 来操作浏览器
+        -在bom中 为我们提供了遗嘱对象，用来完成浏览器的操作
+        -BoM对象：1.window 
+                    代表是浏览器的窗口，同时window也是网页中的全局对象
+                2.Navigator  
+                    1.代表当前浏览器的信息，通过该对象可以来识别不同的浏览器
+                    2.一般我们只会使用userAgent来判断浏览器信息，userAgent是一个字符串，这个字符串包含了浏览器的信息
+                3.location
+                    代表当前浏览器的地址信息，通过location可以获取地址栏信息，或者操作浏览器的页面
+                4.history 
+                    代表浏览器的额历史记录，可以通过该对象来操作浏览器的历史记录
+                      由于隐私的原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或者是向后翻页
+                      而且该操作只在当次访问有效
+                  
+                  5.Screen
+                    代表用户的屏幕信息，通过对象可以获取用户的相关信息
+
+        */
+
+
+        console.log(window)
+        console.log(window.location)
+        console.log(window.navigator.userAgent)  //浏览器信息
+        console.log(window.history)  //
+
+
+        let a = window.navigator.userAgent
+        
+        //test()是正则里面判断是否包含前面的内容的
+        /* 
+         /i (忽略大小写)
+        /g (全文查找出现的所有匹配字符)
+        /m (多行查找)
+        /gi(全文查找、忽略大小写)
+        /ig(全文查找、忽略大小写) 
+        
+        */
+       //判断浏览器的信息，其他的浏览器还是可以通过正则在判断
+
+        if(/chrome/i.test(a)){
+
+            alert("我是chrome")
+        }
+
+        //IE的判断
+        if("ActiveXObject" in window){
+            alert("是我  ieeee")
+        }else{
+            alert("我才不是")
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式语法</title>
+    <script>
+        //创建一个正则表达式检查资格字符串是否有aaa
+        //量词 - 1.通过设置一个内容出现的次数  2.{n} 出现n次 3.量词只对他前面的内容起作用
+
+        let reg = /a{3}/   //a连续出现三次，就是true
+        
+        reg1 = /(ab){3}/   //ac连续出现三次，就是true 
+
+        reg2 = /ab{1,3}c/   //b连续出现1-3次就是true
+
+        reg3 = /ab{2,}c/    //b连续出现2次或者一样就是true
+
+        reg4 = /ab+c/   //至少一个b，就是true
+
+        reg5 = /ab*c/  //0个或者多个b，就是true
+
+        reg6 = /ab?c/  //相当于0个或者一个，就是true
+
+
+
+        // ^ 检查是不是以a开头，和[^a]不同，这个是除了
+        let r = /^a/
+
+        //$ 表示结尾
+        r1 = /a$/
+
+        //同时使用 ^ 和 $ 开头或者是结尾,说明内容只能是a
+        r2 = /^a$/
+
+        //这个表示开头或者是结尾是a
+        r3 = /^a|a$/
+
+        console.log(r.test("badsd"))
+        console.log(r1.test("sdsda"))
+        console.log(r2.test("a"))
+        console.log(r3.test("bssa"))
+
+
+
+        //创建一个字符串，看他是否是合法手机号
+
+        
+        let  phone = "13232111234"
+        //一般情况下   ^$  都是必须有的，表示完全符合
+        let  preg = /^1[3-9][0-9]{9}$/
+
+        console.log(preg.test(phone))
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

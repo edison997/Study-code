@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div跟着鼠标动</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color:royalblue;
+            position:absolute;
+            
+        }
+
+        body {
+            height: 1000px;
+            width: 2200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <script>
+        let box1 = document.getElementById("box1")
+        //document.onmousemove 这个可以给现在能展示的页面绑定上时间
+
+        document.onmousemove = function(e){
+
+            //获取滚动条移动距离 滚动条是html的 （之前chrome认为滚动条是body的）
+            let st = document.documentElement.scrollTop
+            let sl = document.documentElement.scrollLeft
+            console.log(st)
+
+            //clientX   clientY 是基于当前窗口的的鼠标的坐标   就是左上角的那个点,滚动条变了就会变
+            let x = e.clientX+sl
+            let y = e.clientY+st
+
+            // let x = e.pageX
+            // let y = e.pageY
+
+            box1.style.left = x+"px"
+            box1.style.top = y+"px" 
+        }
+    </script>
+</body>
+</html>

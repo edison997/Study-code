@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM剩余的查询方法</title>
+    <script>
+        window.onload = function(){
+            //获取body标签
+            let body = document.body;
+            console.log(body)
+
+            //获取html
+            let html = document.documentElement
+            console.log(html)
+
+            //获取页面的所有元素
+            let all = document.all
+            //和上面的一样
+            let all2 = document.getElementsByTagName("*")
+            console.log(all2)
+            console.log(all)
+            console.log(all.length)
+
+            //根据class查询
+            
+            let box1 = document.getElementsByClassName("box1")
+            console.log(box1)
+
+            //获取box1中的div
+            let d = document.getElementsByClassName("box1")[0].children[0].innerHTML;
+            console.log(d)
+
+            //可以根据css选择器 来查，只会返回一个，如果有多个重复的，就只会悬着第一个
+            let d1 = document.querySelector(".box1 div")
+            console.log(d1)
+            //查询的就是多个，封装到一个数组中，及时符合条件的元素只有一个，也会返回一个数组，和getElements的方法相似，返回数组
+            let d3 = document.querySelectorAll(".box1 div")
+            console.log(d3)
+        }
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div>222</div>
+        <div>333</div>
+    </div>
+    <div></div>
+</body>
+</html>

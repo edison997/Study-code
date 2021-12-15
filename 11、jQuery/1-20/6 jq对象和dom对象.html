@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq对象和dom对象</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color:yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+
+
+    <script src="../jquery.min.js"></script>
+    <script>
+        //1.dom对象，用原生js获取就是dom对象
+        let mydiv = document.querySelector("div")
+
+        console.dir(mydiv)
+        //2.jq对象 用jq方式获取的对象就是jq对象  本质：通过$把DOM元素进行包装
+        $("div");
+        console.dir($("div"))
+        //3.两者不同的方法要区分开来
+        // mydiv.style.display = "none";
+        // $('div').hide();
+
+        //=========================================================================
+
+        //两者之间的转换(这个方法就是把jq的对象转换成js的dom对象使用，因为他是伪数组，我们直接用下面的方法调用)
+        $('div')[0].style.width = "300px"
+        $('div').get(0).style.height = '200px'
+    </script>
+</body>
+</html>

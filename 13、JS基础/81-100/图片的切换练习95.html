@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片的切换练习</title>
+    <script>
+        //没有动起来的的轮播图
+        window.onload = function(){
+            let prev = document.getElementById("prev")
+            let next = document.getElementById("next")
+            let img = document.getElementsByTagName("img")[0]
+            let info = document.getElementById("info")
+
+
+
+            let imgArr = ["../81-100/img/1.jpg","../81-100/img/2.jpg","../81-100/img/3.jpg","../81-100/img/4.jpg","../81-100/img/5.jpg"]
+            let index = 0
+            info.innerHTML = "一共"+imgArr.length+"张图，这是第"+(index+1)+"张"
+            prev.onclick = function(){
+                index--
+                if(index<0){
+                    index=imgArr.length-1
+                }
+                img.src = imgArr[index]
+                 info.innerHTML = "一共"+imgArr.length+"张图，这是第"+(index+1)+"张"
+            }
+
+            next.onclick = function(){
+                index++;
+                if(index>imgArr.length-1){
+                    index=0
+                }
+                img.src = imgArr[index]
+                 info.innerHTML = "一共"+imgArr.length+"张图，这是第"+(index+1)+"张"
+            }
+
+            
+
+
+
+
+
+
+        }   
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            margin: 30px auto;
+            background-color: yellowgreen;
+            padding: 20px;
+            text-align: center;
+        }
+        img {
+            width: 500px;
+            height: 375px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div id="outer">
+        <p id="info"></p>
+        <img src="../81-100/img/1.jpg" alt="">
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+</body>
+</html>

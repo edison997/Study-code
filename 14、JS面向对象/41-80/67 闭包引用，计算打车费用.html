@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算打车费用</title>
+</head>
+<body>
+    <!-- 
+        1.起步价13元（三公里内），加1公里加5元，用户输入公里数就可以计算打车价格
+        2.如果拥堵，总价加十元
+     -->
+     <input type="text">
+     <button>计算价格</button>
+     <div></div>
+
+
+
+     <script>
+        let car = (function () { 
+            let start = 13;
+            let total = 0;
+            function price(i){
+                if(i<=3){
+                    total = start;
+                }else if(i>3){
+                    total = (i-3) * 5 + start
+                }
+
+                return total;
+            }
+
+            function yd(flag){
+                return flag ? total+10 : total
+            }
+
+            return {
+                price:price,
+                yd:yd
+            }
+
+        })();
+        console.log(car.price(10))
+        console.log(car.yd(true))
+     </script>
+</body>
+</html>

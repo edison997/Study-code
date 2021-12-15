@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建添加删除元素</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+
+    <div>原来的</div>
+
+    <script src="../jquery.min.js"></script>
+    <script >
+        //1、创建
+        let li = $("<li>后来的</li>")
+        // 2、添加
+            //（1）内部添加（父子）
+            $("ul").append(li) //添加到前面
+            $("ul").prepend(li); //添加到后面
+            //（2）外部添加（兄弟）
+
+        let div = $("<div>我才是 </div>")
+        // $("div").after(div) //在后面添加
+        $("div").before(div) //在前面添加
+        // 3、删除
+
+        // $("ul").remove();  删除自身
+        // $("ul").empty();  删除子节点
+        $("div").html("");  //也可以删除字节点和本身
+    </script>
+</body>
+</html>

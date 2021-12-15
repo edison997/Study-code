@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>super要放到子类的方this之前</title>
+</head>
+<body>
+    <script>
+        class F {
+            constructor(x,y){
+                this.x = x
+                this.y = y
+            }
+            sum(){
+                console.log(this.x+this.y)
+            }
+        }
+
+        class S extends F {
+            constructor(x,y){
+                //利用super调用父类的构造函数，super要放到this之前
+                super(x,y);
+                this.x = x
+                this.y = y
+            }
+            subtract(){
+                console.log(this.x - this.y)
+            }
+        }
+
+        let a = new S(5,4)
+        a.subtract();
+        a.sum()
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>axiso</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    </head>
+
+    <body>
+        <button>GET</button>
+        <button>POST</button>
+        <button>AJAX</button>
+
+        <script src="../jquery.min.js"></script>
+        <script>
+            let btns = document.getElementsByTagName('button')
+
+            // axios.defaults.baseURL = 'https://api.example.com';
+
+            btns[0].onclick = function () {
+                axios.get('http://localhost:8080/axios-server', {
+                        params: {
+                            b: 1,
+                            A: 2
+                        },
+                        headers: {
+                            name: "zs",
+                            age: 13
+                        }
+                    })
+                    .then((res) => {
+                        console.log(res.data)
+                    })
+            }
+
+
+            btns[1].onclick = function () {
+                axios.post('http://localhost:8080/axios-server', {
+                    params: {
+                        b: 1,
+                        A: 2
+                    },
+                    headers: {
+                        name: "zs",
+                        age: 13
+                    },
+                    // data:{
+                    // password:"admin",
+                    // password:111
+                    // },
+
+                }).then((res) => {
+                    console.log(res)
+                })
+            }
+
+
+            //通用的
+            btns[2].onclick = function () {
+                axios({
+                    url: 'http://localhost:8080/axios-server',
+                    method: 'POST',
+                    params: {
+                        b: 1,
+                        A: 2
+                    },
+                    headers: {
+                        name: "zs",
+                        age: 13
+                    },
+                    data: {
+                        password: "admin",
+                        password: 111
+                    },
+
+                }).then((res) => {
+                    console.log(res)
+                })
+            }
+        </script>
+    </body>
+
+</html>

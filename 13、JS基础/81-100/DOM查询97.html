@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最后的DOM查询</title>
+    <script>
+        //有点像封装的思想，只有重复的太多，就像办法把他简化
+        function myClick(btnId,fun) {
+            let btn = document.getElementById(btnId)
+            btn.onclick = fun;
+        }
+        window.onload = function () { 
+            myClick("btn",function(){
+                //过去父节点，其实就是父元素
+                let bjP = document.getElementById("bj").parentNode
+                console.log(bjP)
+                let a = bjP.innerHTML
+                console.log(a)
+                console.log(bjP.innerText)
+
+                //innerHTML和innerText的区别就是，前者有便签，后者没有标签
+            })
+            
+
+
+            myClick("btn2",function(){
+                let sz = document.getElementById("sz").previousSibling
+                console.log(sz)
+                let sz2 = document.getElementById("sz").previousElementSibling
+                console.log(sz2)
+
+                //下一个 nextSibling  nextElementSibling 用法一样
+            })
+
+            myClick("btn3",function () { 
+                //获取text值得第二种方法，推荐使用inner
+                let bj1 = document.getElementById("bj").innerHTML
+                let bj = document.getElementById("bj").childNodes[0].nodeValue
+                console.log(bj)          
+                console.log(bj1)   
+                console.log(bj1==bj)      
+             })
+         }
+    </script>
+</head>
+<body>
+    <ul id="city">
+        <li id="bj">北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li id="sz">深圳</li>
+    </ul>
+
+    <button id="btn">点我点我</button>
+    <button id="btn2">获取兄弟节点</button>
+    <button id="btn3">获取北京的值</button>
+    
+</body>
+</html>

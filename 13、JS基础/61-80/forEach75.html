@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach</title>
+    <script>
+
+        //forEach遍历
+
+          let arr = [1,2,3,4,5]
+
+          //forEach（）方法需要一个函数作为参数
+          //想这种函数，由我们创建。但是不由我们调用的函数，叫做回调函数
+          //数组有几个元素，数组就执行几次，每次执行时，浏览器会把我们遍历的元素 ，已实参的形式传递进来，我们可以定义形参，来读取这些内容
+          //浏览器会在函数中传递三个元素
+          //第一个：就是正在遍历的元素   第二个：就是index  第三个：就是正在遍历的数组
+
+          arr.forEach(
+              function(){
+                  console.log(1111)
+              }
+          )
+
+          arr.forEach(function(val,index,obj){
+                console.log(val,index,obj)
+          })
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

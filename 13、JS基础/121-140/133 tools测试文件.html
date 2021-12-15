@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的应用</title>
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            top: 200px;
+        }
+        #b {
+            border:1px solid black;
+            height: 800px;
+            width: 0;
+            position:absolute;
+            left: 800px;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <button id="btn">点击按钮后 Box1 向右移动</button>
+    <button id="btn2">向左移动</button>
+    <button id="btn3">test</button>
+        <br/>
+        <br/>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="b"></div>
+
+
+
+
+
+    <script src="../121-140/133tools定时器.js"></script>
+    //直接连接我封装好的函数就行了
+    <script>
+        let btn = document.getElementById("btn");
+        let btn2 = document.getElementById("btn2");
+        let btn3 = document.getElementById("btn3");
+        let box1 = document.getElementById("box1");
+        let box2 = document.getElementById("box2")
+
+        btn.onclick = function(){
+            move(box1,20,800,"top");
+        } ;
+        btn2.onclick = function(){
+            move(box1,30,600,"width")
+        };
+        //利用套娃的回调函数，可以实现简单的动画效果
+        btn3.onclick = function(){
+            move(box2,10,100,"top",function(){
+                move(box2,30,600,"width",function(){
+                    move(box2,30,600,"height",function(){
+                        move(box2,20,800,"left");
+                        
+                })
+                })
+            });
+
+           
+        };
+
+    </script>
+</body>
+</html>

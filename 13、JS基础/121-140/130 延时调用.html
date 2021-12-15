@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延时调用</title>
+</head>
+<body>
+
+
+    <script>
+        let a = 1;
+        // setInterval(()=>{
+        //     console.log(a++);
+        // },5000)
+
+        //只调用一次
+        let b = setTimeout(()=>{
+            console.log(a--);
+        },500)
+
+        console.log(b)
+    </script>
+</body>
+</html>

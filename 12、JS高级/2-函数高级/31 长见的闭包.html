@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的闭包</title>
+</head>
+<body>
+    <!-- 
+        1.将函数作为另一个函数的返回值
+        2.将函数作为实参传递给另一个函数调用
+     -->
+    <script>
+        // 1.将函数作为另一个函数的返回值
+        function fn1(){
+            let a = 3;
+            function fn2(){
+                a++;
+                console.log(a)
+            }
+            return fn2;
+        }
+        //调用一次外部函数就产生一个闭包
+       let f = fn1();  //这一步就相当于是  let f = fn2 把return的返回值赋值给f
+       f()  //就是相当于 fn2()
+       f()
+
+
+        //2.将函数作为实参传递给另一个函数调用
+        function show(msg,time){
+            setTimeout(function(){
+                alert(msg);    //他是用了外部函数的变量，所以他产生了闭包
+            },time)
+        }
+        show("nishi",1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <script>
+        //在数组中的用法
+        let arr = [1,23,4,5,6]
+        let arr2  = [2,3,4,5,8,9]
+        
+        // let arr4 = arr.concat(arr2)
+        // console.log(arr4)
+        console.log(...arr) //展开一个数组
+        let arr3 = [...arr,...arr2]  //拼接一个数组
+        console.log(arr3)
+
+
+        //在函数中的用法
+        function fn(...args){
+            //这里是reduce的求数组和的用法
+            return args.reduce((pre,current)=>{
+                return pre + current
+            })
+        }
+
+        console.log(fn(1,2,34,5)) /* 上面就能接收所有的参数 */
+
+
+        //对象中的用法
+        let person = {n:'jack',age:19}
+        // console.log(...person) 不能这样写，报错，拓展运算符不能展开对象
+        //可以拷贝person
+        // let p2 = person  这里只是复制了person中的地址给p2,两个都指向同一个内存地址，其中一个改变属性值，另一个都会跟着改变
+
+        let p2 = {...person}
+        console.log(p2)
+
+        //添加person中有的 就是修改，没有的就是添加
+        let p3 = {...person,n:"justin",add:"bejing"}
+        console.log(p3)
+    </script>
+</body>
+</html>

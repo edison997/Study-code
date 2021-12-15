@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型</title>
+    <script>
+
+        function mClass(){
+
+        }
+
+        mClass.prototype.a="我是原型中的a"
+
+        let mc = new mClass ()
+        mc.age = 18
+
+        console.log(mc.a)
+        //使用in检查对象中是否含有某个属性时，如果对象中没有，原型中有，也会返回true
+        console.log("a" in mc)  //true
+    
+
+        //可以使用hasOwnProperty()来检查自身中是否含有此属性
+        console.log(mc.hasOwnProperty("a"))  //false
+
+        console.log(mc.hasOwnProperty("age")) //true
+
+        console.log(mc.hasOwnProperty("hasOwnProperty"))  //false
+
+       
+
+        console.log(mc.__proto__.hasOwnProperty("hasOwnProperty"))  //false
+         //原型对象也是对象，所以他也有原型,直接去他原型的原型中找
+        console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")) //true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

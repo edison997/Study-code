@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post请求</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="box"></div>
+
+    
+    <script>
+        const box = document.getElementById("box");
+
+        // 移入事件发 post 请求
+        box.addEventListener("mouseover",function(){
+            console.log(111)
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST','http://172.16.108.156:8080/server');
+
+            //设置请求头
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+
+            xhr.send('a=100&b=200');
+
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if (xhr.status >= 200 && xhr.status <300){
+
+                        box.innerHTML = xhr.response
+                    }
+                }
+            }
+        })
+
+
+        // 键盘按下事件发 post 请求，返回json数据转换
+        window.onkeyup = function(){
+            // console.log(11)
+            const xhr = new XMLHttpRequest();
+
+            xhr.responseType = "json"
+            
+            xhr.open("POST","http://172.16.108.156:8080/json-server")
+
+
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status <300){
+                        // 1.手动转化json字符串
+                        // let data = JSON.parse(xhr.response)
+                        // console.log(data)
+                        // box.innerHTML = data.name
+
+                        //自动转换 xhr.responseType = "json"
+
+                        box.innerHTML = xhr.response.name
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

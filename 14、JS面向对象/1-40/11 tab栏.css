@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width:100%;
+}
+h2 {
+    width:300px;
+    margin: 50px auto;    
+}
+
+.tabBox{
+    margin: 0 auto;
+    width: 1000px;
+    height: 500px;
+    border: 5px solid #bfa;
+    position: relative;
+
+}
+/* 也是清除浮动 */
+nav {
+    
+    position: relative;
+    overflow: auto;
+    
+    text-align: center;
+    /* border-bottom: 1px solid red;
+     */
+}
+
+/* nav::after {
+     content: '';
+     position:absolute;
+     left:303px;
+     bottom: 0;
+    
+     width: 697px;
+     height: 1PX;
+     background-color:red;
+
+} */
+/* 清除浮动，给父元素添加伪类属性 */
+/* nav :after { */
+    /* clear: both;
+    content: " ";
+    display: block; */
+    
+   
+/* } */
+ul {
+    /* float: left; */
+   
+}
+
+li {
+    list-style: none;
+    float: left;
+    width: 100px;
+    height: 30px;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+    
+    margin: 0 auto;
+    
+}
+
+.liActive {
+    border-bottom: 0;
+    background-color: yellow;
+}
+
+section {
+    width: 100%;
+    display: none;   
+}
+.secActive{
+    display: block;
+}
+.add {
+   float: right;
+   width: 20px;
+   height: 20px;
+   border: 1px solid blue;
+   line-height: 20px;
+}
+
+span { 
+   float: left;
+   margin-left:4px;
+}
+
+.closeSpan { 
+    cursor: pointer;
+}
+
+input {
+    width:80%;
+    height:80%;
+}

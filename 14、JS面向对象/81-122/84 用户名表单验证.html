@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户名表单验证</title>
+    <style>
+        .yes  {
+            color: green;
+        }
+        .no {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"><span>请输入用户名</span>
+    <script>
+        let input = document.querySelector("input");
+        let span = document.querySelector("span");
+
+        let reg = /^[a-zA-Z0-9_-]{6,15}$/
+        input.onblur = function () { 
+
+            if (reg.test(input.value)) {
+                span.innerHTML = input.value
+                span.className = "yes"
+            }else{
+                span.innerHTML = "你输入的名字不符合规则"
+
+                span.className = "no"
+            }
+        }
+    </script>
+</body>
+</html>

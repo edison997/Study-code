@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>面试题</title>
+    </head>
+
+    <body>
+        <script>
+            //1
+            let name = "The Window"
+            let obj = {
+                name: "My obj",
+                getName: function () {
+                    return function () {
+                        return this.name;
+                    }
+                }
+            }
+
+            console.log(obj.getName()()) // the window
+
+            //2
+            let name1 = "The Window"
+            let obj1 = {
+                name1: "My obj",
+                getName: function () {
+                    // let that = this;
+                    // return function () {
+                    //     return that.name1;
+                    // }
+
+                    //这个和上面那个是一个意思，es6中的箭头函数的作用
+                    return () => {
+                        return this.name1;
+                    }
+                }
+            }
+
+            console.log(obj1.getName()()) // my obj
+
+
+            //3
+            function fun(n,o){
+                console.log(o)
+                return {
+                    fun:function(m){
+                        return fun(m,n)
+                    }
+                }
+            }
+
+            //只有第一次调用的是外层fun，   a ={}，然年后就是抵用对象a的函数fun
+            let a = fun(0);  a.fun(); a.fun(1); a.fun(2); a.fun(3);
+            let b = fun(0).fun(1).fun(2).fun(3);
+            
+            let c = fun(0).fun(1); c.fun(2); c.fun(3);
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Object.defineProperty.html</title>
+    </head>
+
+    <body>
+        <script>
+            //48 Object.defineProperty() .定义新属性或修改原有的属性
+            let obj = {
+                id: 1,
+                name: "小米",
+                price: 999
+            }
+            //===之前的添加修改
+            // obj.num = 1000
+            // obj.price = 1999
+            // console.log(obj)
+
+
+            //===新的添加修改
+            // 添加一个属性
+            Object.defineProperty(obj, "size", {
+                value: "xl",
+                writable: true, //因为不写这个，他默认就是false，是不能修改的，所以要改成true才能修改
+
+            })
+            console.log(Object.keys(obj))
+
+            delete obj.size
+            console.log(obj)
+            //修改新添加的属性size
+            Object.defineProperty(obj, "size", {
+                value: "xxxl",
+
+            })
+            console.log(obj)
+
+            //修改obj本身的属性
+            Object.defineProperty(obj, "price", {
+                value: 2999
+            })
+            console.log(obj)
+
+            //让属性不能修改
+            Object.defineProperty(obj, "id", {
+                //如果是false 则不允许修改这个属性，默认值也是false，如果为true才能修改
+                writable: false
+            })
+            obj.id = 2
+            console.log(obj)
+
+            Object.defineProperty(obj, "address", {
+                value: "新东方",
+                //如果是false 则不允许修改这个属性，默认值也是false，如果为true才能修改
+                writable: false,
+                //enumerable，如果值为false，则不允许遍历，默认值是false
+                enumerable: true,
+                //configurable，如果值为false，则不允许删除这个是属性，还不允许修改第三个参数的特性，默认 false
+                configurable: false
+            })
+            console.log(obj)
+            console.log(Object.keys(obj))
+
+            delete obj.address
+            console.log(obj)
+            delete obj.address
+            console.log(obj)
+
+
+
+            // Object.defineProperty(obj, "address", {
+            // value: "新东方",
+            // //如果是false 则不允许修改这个属性，默认值也是false，如果为true才能修改
+            // writable: true,
+            // //enumerable，如果值为false，则不允许遍历，默认值是false
+            // enumerable:true,
+            // //configurable，如果值为false，则不允许删除这个是属性，还不允许修改第三个参数的特性，默认 false
+            // configurable:true
+            // })
+
+
+           
+        </script>
+    </body>
+
+</html>

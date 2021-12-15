@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>商品查询案例</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .search {
+                width: 1000px;
+                margin-top: 100px;
+                margin: 30px auto;
+                text-align: center;
+            }
+
+            table {
+                width: 600px;
+                text-align: center;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="search">
+            按照价格查询：<input type="text" class="start">-<input type="text" class="end">
+            <button class="search_price">搜索</button>
+            按照商品名称查询：<input type="text" class="product">
+            <button class="search_pro">查询</button>
+        </div>
+        <table border="1" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>产品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+
+
+        <script>
+            let data = [{
+                id: 1,
+                name: "小米",
+                price: 1999
+            }, {
+                id: 2,
+                name: "苹果",
+                price: 9999
+            }, {
+                id: 3,
+                name: "三星",
+                price: 6999
+            }]
+
+            let tbody = document.querySelector("tbody")
+            let start = document.querySelector(".start")
+            let end = document.querySelector(".end")
+            let search_price = document.querySelector(".search_price")
+            let product = document.querySelector(".product")
+            let search_pro = document.querySelector(".search_pro")
+            show(data);  //先调用 展示所有数据
+            //循环数据展示到页面上
+            function show(mydata) { 
+                tbody.innerHTML = ''; //先清空
+                mydata.forEach(function (val) {
+                tbody.innerHTML += ` <tr>
+                    <td>${val.id}</td>
+                    <td>${val.name}</td>
+                    <td>${val.price}</td>
+                </tr>`
+                })
+
+             }
+
+            //根据价格查询
+            // search_price.onclick = function () { 
+            //     console.log(111)
+            //  }
+            search_price.addEventListener('click', function () {
+                let newData = data.filter(function (val) {
+                //     if(start.value <= val.price && val.price<=end.value){ //切记不能这样写 a<b<c  应该这样a<b && b<c
+                //         return val 
+                //     }
+
+                    //还可以这样写
+                    return start.value <= val.price && val.price <= end.value
+                })
+                console.log(newData)
+                show(newData)
+                start.value = ""
+                end.value = ""
+            })
+
+
+            //根据名称查询
+            search_pro.addEventListener('click',function () {
+                let arr = [];
+                data.some(function (val) {
+                    if(val.name === product.value){
+                        arr.push(val);
+                        return true; // 后面必须写true some（）本来就是返回一个布尔值
+                    }
+                })
+                show(arr);
+            })
+
+
+        </script>
+    </body>
+
+</html>

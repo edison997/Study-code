@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的操作</title>
+    <style>
+        .b1 {
+            height: 200px;
+            width: 200px;
+            background-color: #bfa;
+        }
+        .b2 {
+           
+            height: 500px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="b1"></div>
+    <button id="btn">点击后修改box1的有样式</button>
+    <script>
+        let box1 = document.getElementById("box1");
+        let btn = document.getElementById("btn");
+
+        btn.onclick = function(){
+        /*  通过style属性修改的元素样式，每修改一个样式，浏览器就要重新渲染一次页面
+            性能差，修改多个样式也不方便 
+        */
+            // box1.style.backgroundColor = "red";
+
+
+            /*
+             可以修改元素的class的属性，就可以直接修改样式，把要用的属性写到css中就行了 
+            这种方式页面值重新渲染一次，性能更好
+            并且这样，会更好的将行为和表现分离            
+            */
+
+            // box1.className = "b2";
+            //合并b1 和 b2 的样式，记得在b2前面加上  空格
+            // box1.className += " b2"
+
+
+            // addClass(box1,"b2")
+            // removeClass(box1,"b1")
+
+            toggleClass(box1,"b1");
+            
+        }
+
+        //添加类的函数 obj元素  str类
+        function addClass(obj,str){
+            //这里就是通过正则表达式判断有没有str类，有就不加，没有就加。
+            if(!hasClass(obj,str)){
+                 obj.className += " "+str;
+                }
+            };
+           
+
+        //检查有没有这个类g
+        function hasClass(obj,str){
+            //正则表达式 \b代表单词边界
+            // let reg = /\bb2\b/
+
+            //上面那个不能传变量，要使用构造函数
+            let reg = new RegExp("\\b" + str + "\\b");
+            // 这里返回一个布尔值
+            return reg.test(obj.className);
+        };
+
+        //删除一个类的函数
+        function removeClass(obj,str){
+            //正则检查是否含有类
+             let reg = new RegExp("\\b" + str + "\\b");
+            //有的话，直接给他变成一个空串
+             obj.className = obj.className.replace(reg,"");
+        };
+
+        //切换class
+        //如果有就删除，没有就添加
+        function toggleClass(obj,str){
+            if(hasClass(obj,str)){
+                removeClass(obj,str);
+
+            }else{
+                addClass(obj,str);
+            }
+        }
+    </script>
+</body>
+</html>

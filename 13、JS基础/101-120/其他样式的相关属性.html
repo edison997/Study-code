@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他样式的相关属性</title> 
+    <style> 
+       #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        padding:10px;
+        border: 10px solid red;
+    }
+    /* #box2 {
+        position: relative;
+    }
+    #box3 {
+        position: relative;
+    } */
+
+    #box5 {
+        width: 300px;
+        height: 500px;
+        background-color:#bfa;
+        overflow:auto;
+
+    }
+
+    #box6 {
+        width: 400px;
+        height: 600px;
+        background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box3"  >
+        <div id="box2">
+            <div id="box1"></div>
+        </div>
+    </div>
+
+    <div id="box5">
+        <div id="box6"></div>
+    </div>
+
+    <button id="btn">点我</button>
+
+
+    
+    <script>
+        let box1 =document.getElementById("box1")
+        let btn = document.getElementById("btn")
+        let box5 =document.getElementById("box5")
+        btn.onclick = function(){
+            /* 
+            clientHeight  clientWidth
+            1.获取元素的可见高度
+            2.都是不带px 的，返回的是一个数字，可以直接惊醒计算
+            3.包括padding  ，但是不不包括border
+            4.属性也是只读的
+            
+            */
+            console.log(box1.clientHeight)
+            console.log(box1.clientWidth)
+
+
+            /* 
+            offsetHeight  offsetHeight
+            1.包括padding border
+            */
+            console.log(box1.offsetHeight)
+            console.log(box1.offsetHeight)
+
+
+            /* 
+            offsetParent
+            1.可以获取当前元素的定位父元素
+            2.会获取到当前元素最近开启定位的祖先元素
+            3.如果祖先元素都没有开启定位，就返回body            
+            */
+           console.log(box1.offsetParent)
+
+            /* 
+            1.还是相对于父元素的偏移量  数字
+            */
+           console.log(box1.offsetLeft)
+           console.log(box1.offsetTop)
+
+            /* 
+            scrollHeight scrollwidth
+
+            可以获取元素整个滚动区域的宽高
+            */
+           console.log(box5.clientHeight)
+            console.log(box5.scrollHeight)
+
+
+            /* 
+            获取滚动条滚动的距离
+            */
+           console.log(box5.scrollLeft)
+           console.log(box5.scrollTop)
+
+            /* 
+            当scrollHeight-scrollTop ===clientHeight
+            说明滚动条滚到底了
+
+            注册时如阅读文件就能用到
+            */
+
+
+
+
+
+
+
+
+
+        }
+
+    </script>
+</body>
+</html>

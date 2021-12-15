@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+<body>
+    <h1 id="count">1</h1>
+    <script>
+        let count = document.getElementById("count");
+        //参数：1.回调函数 2.时间毫秒
+        //T就是返回值：返回一个Number类型的数据，这个数字来作为定时器的唯一标识
+
+        let index = 1;
+        let T = setInterval(function(){
+            count.innerHTML = index++;
+            if(index==21){
+                //这个是关闭定时器
+                clearInterval(T)
+            }
+        },500)
+
+        console.log(T)
+       
+    </script>
+</body>
+</html>

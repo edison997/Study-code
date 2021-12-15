@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递的问题</title>
+</head>
+<body>
+    <!-- 
+        一、在js调用函数时传递变量参数时，是值传递还是引用传递？
+            理解1.都是值（基本/地址值）传递
+            理解2.可能是值传递，也可能是引用类型传递（地址值）
+        二、js引擎如何管理内存
+            1.内存的生命周期
+                分配小内存空间。得到它的使用权
+                储存数据，可以进行反复操作
+                释放小内存空间
+            2.释放内存   
+                局部变量：函数执行完毕，自动释放；
+                对象：成为垃圾对象===垃圾回收器回收 
+                全部变量：不会释放
+
+     -->
+
+    <script>
+        let a = 3;
+        function fn(a){
+            a = a +1;
+            console.log(a);//4 
+        }
+        fn(a);
+        console.log(a);//3 这个输出的就是全局的a
+
+
+
+        function fn2(obj){
+            console.log(obj);
+        }
+
+        let obj = {name:"sss"}
+        fn2(obj);
+
+        //=================================================================
+        let b = 3;
+        let objq = {};
+        objq = null;
+
+        function fun(){
+            let c = 5;
+        }
+
+        fun(); //局部变量：函数执行完毕，自动释放；
+
+        function fun2(){
+            let d = {};
+        }
+        fun2();//b是自动释放，b指向的额对象实在后面某个时刻由垃圾回收器回收
+
+
+
+    </script>
+</body>
+</html>

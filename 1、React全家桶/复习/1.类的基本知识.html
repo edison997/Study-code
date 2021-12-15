@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.类的基本知识</title>
+</head>
+<body>
+    <script>
+        /* 
+        总结：
+            1.类中的构造器不是必须要写的，要多实例进行一些操作的时候，如添加属性的时候就要写
+            2.如果 a类 继承了 b类 ； a类中写了构造器，那么a类构造器中的super是必须要调用的
+            3.类中所定义的方法，都是放在了类的原型对象上，供实例去使用
+        */
+        class Person {
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            speak(){
+                // 这个方法是原型上的方法，所以实例对象可以直接调用（构造函数的显示原型 === 实例对象隐式原型）
+                console.log(`我是${this.name},年龄${this.age}`)
+            }
+        }
+
+        const p = new Person("mike",22);
+        const p2 = new Person("zs",33)
+
+        console.log(p)
+        console.log(p2)
+
+        p.speak();
+        p2.speak();
+
+
+        class Student extends Person {
+            constructor(name,age,grade){
+                //super 必须要写在最前面
+                super(name,age);
+                this.grade = grade
+            }
+            speak(){
+                 console.log(`我是${this.name},年龄${this.age}，读${this.grade}`)
+            }
+
+            study() {
+                console.log("我爱学习")
+            }
+        }
+
+        const s = new Student ("ww",12,"大一")
+        console.log(s)
+
+        //当他自己有speak方法的时候，就不会去继承的类上面去找
+        s.speak();
+        s.study()
+
+
+        class Car {
+            constructor(name,age){
+                this.name = name;
+                this.age = age
+                // this.wheel = 4
+            }
+            //类中可以直接写赋值语句，如下代码：就是给Car的实例对象添加一个属性 名字为wheel
+            //这样写死 constructor都可以不用写了
+            wheel = 4
+            static demo = 22
+        }
+
+
+        let car = new Car("benz G63",1999999)
+        let car2 = new Car("Road over",999999)
+
+        console.log(car)
+        console.log(car2)
+    </script>
+</body>
+</html>

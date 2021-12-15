@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二级菜单</title>
+    <link rel="stylesheet" href="138 css.css">
+</head>
+<body>
+
+    <div>
+       <div>
+           <span class="menuSpan">我是第一行</span>
+           <div>111</div>
+           <div>111</div>
+           <div>111</div>
+           <div>111</div>
+       </div>
+        <div class="closeDiv">
+           <span class="menuSpan">我是第二行</span>
+           <div>22</div>
+           <div>22</div>
+           <div>22</div>
+           <div>22</div>
+       </div>
+        <div class="closeDiv">
+           <span class="menuSpan">我是第三行</span>
+           <div>333</div>
+           <div>333</div>
+           <div>333</div>
+           <div>333</div>
+       </div>
+        <div class="closeDiv">
+           <span class="menuSpan">我是第四行</span>
+           <div>4444</div>
+           <div>4444</div>
+           <div>4444</div>
+           <div>4444</div>
+       </div>
+    </div>
+    <script src="137 tools类的操作.js"></script>
+    <script src="133tools定时器.js"></script>
+    <script>
+        /* 
+        closeDiv,有这个类就是关闭
+        */
+        let menuSpan = document.querySelectorAll(".menuSpan");  //这个回去节点是相当于css选择器
+      
+
+        //这个是第一个默认打开的节点
+        let openDiv = menuSpan[0].parentNode; 
+
+        for(let i=0;i<menuSpan.length;i++){
+            menuSpan[i].onclick = function(){
+                //this代表他点击的span，找到父元素，控制父元素开关
+                let parentDiv = this.parentNode;
+                console.log(111);
+
+                //就是切换他的类
+                // toggleClass(parentDiv,"closeDiv");
+
+                toggleMenu(parentDiv);
+
+                //判断openDiv 和parentDiv是否相同,如果含有他就不进这个判断。
+                if(openDiv != parentDiv && !hasClass(openDiv,"closeDiv")){
+
+                    //打开菜单后，应该关闭之前打开的菜单
+                    // addClass(openDiv,"closeDiv");
+
+                    // toggleClass(openDiv,"closeDiv")
+                    
+                    toggleMenu(openDiv);
+                }
+
+                //修改openDiv为当前打开的菜单
+                openDiv = parentDiv;
+
+            }
+
+            function toggleMenu(obj){
+                //获取开始的高度
+                let begin = obj.offsetHeight;
+                //添加类
+                toggleClass(obj,"closeDiv");
+                //获取结束的高度
+                let end = obj.offsetHeight;
+                //设置开始的高度
+                obj.style.height = begin + "px";
+                //使用动画让他关闭
+                move(obj,10,end,"height",function(){
+                    obj.style.height = "";
+                })
+            }
+
+        }
+    </script>
+</body>
+</html>

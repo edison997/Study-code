@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式的变化</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // 1.变量必须通过关键字声明才能使用，不然会报错
+        // names = "zs";
+        // console.log(names)
+
+        let names = "ww"
+        console.log(names)
+
+        //2.严格模式下不能删除已经声明好的变量
+        // delete names ;
+
+        // 3.严格模式下全局作用域中的函数的this是undefined
+        function fn(){
+            console.log(this)
+        }
+        fn()
+
+        //4.严格模式下，不加new，this的指向会有问题,只有加new才会指向实例对象，不然就相当于给undefined添加属性了
+        function Fun(){
+            this.sex = "nan"
+        }
+
+        let s = new Fun()
+        console.log(s.sex)
+
+
+        //5.定时器this指向,没有变化，还是window
+        setTimeout(function() {
+            console.log(this)
+        }, 100);
+
+        //6.事件 和 调用 还是指向调用者
+
+        //7.严格模式下不允许参数重名
+        // function obj(a,a){
+        //     console.log(a+a)
+        // }
+        // obj(1,2)
+
+        
+    </script>
+</body>
+</html>

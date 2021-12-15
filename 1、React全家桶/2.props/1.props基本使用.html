@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>初始化state</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+        <div id="box1"></div>
+        <div id="box2"></div>
+
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/babel">
+            class Person extends React.Component {
+                render(){
+                    //结构赋值
+                    const {name,age,gender} = this.props
+                    return (
+                        <ul>
+                            <li>姓名：{name}</li>    
+                            <li>年龄：{age}</li>    
+                            <li>性别：{gender}</li>    
+                        </ul>
+                    )
+                }
+            }
+            // 直接添加属性到组件上,然后就能通过props拿到对应的值
+            ReactDOM.render( <Person name="zs" age="15" gender="男"/>,document.getElementById("box"))
+            ReactDOM.render( <Person name="ww" age="15" gender="男"/>,document.getElementById("box1"))
+            ReactDOM.render( <Person name="ls" age="15" gender="男"/>,document.getElementById("box2"))
+        </script>
+    </body>
+
+</html>

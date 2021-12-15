@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则</title>
+</head>
+<body>
+    <script>
+        //利用new创建
+        let reg = new RegExp(/123/)
+        console.log(reg)
+
+        //利用字面量来创建
+        let reg2 = /123/
+        console.log(reg2)
+
+        let a = 111;
+        //用test方法来检测字符串中是否符合正则表达式的要求
+        console.log(reg2.test(a))
+
+
+        //边界符号^ $
+        let reg3 = /abc/
+        console.log(reg3.test("abccc")) //没加边界符号，表示只要包含这adc就返回的true
+
+        //实际上使用都是开头结尾的符号，精确匹配
+        let reg4 = /^abc$/
+        console.log(reg4.test("abcc"))
+
+    </script>
+</body>
+</html>

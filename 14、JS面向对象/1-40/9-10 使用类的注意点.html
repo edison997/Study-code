@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用类的注意点</title>
+</head>
+<body>
+    <!-- 
+        1. ES6 中类没有变量提升，所以必须先定义类，才能通过类实例化对象
+        2.类里面的共有的属性和方法一定要加this使用(参数传递除外，react中的props)
+     -->
+     <button id="btn">点我</button>
+    <script>
+        //验证是不是this 是不是指向实例化对象
+        let that;
+        var that2;
+        class Star {
+            constructor(name,age){
+                //constructor里面的this指向的创建的实例对象
+                that = this;
+                console.log(this);
+                this.name = name;
+                this.age = age;
+                this.sing()
+                this.btn = document.getElementById("btn");
+                //sing后面不加小括号，保证他在点击的时候才调用，不然那一来就调用了
+                this.btn.onclick = this.sing;
+            }
+            sing() {
+                //这个方法里的this指向btn，因为btn要调用他
+                console.log(this)
+                console.log(this.name)
+                console.log(that.name)  //改变this的指向，that里面的this是constructor中的this
+            }
+            dance(){
+                //这个this谁调用这个方法就指向谁
+                that2 = this;
+                console.log(this)
+            }
+        }
+
+        var a = new Star("zs");
+        a.sing();
+        a.dance();
+        console.log(that === a)
+        console.log(that2 === a)
+    </script>
+</body>
+</html>

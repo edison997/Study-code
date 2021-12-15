@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>5.滚动条使用getsnap案例.html</title>
+        <style>
+            .list {
+                width: 300px;
+                height: 200px;
+                background-color: #bfa;
+                overflow: auto;
+            }
+
+            .news {
+                width: 100px;
+                height: 40px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            //这个算法就是只改变改动了的标签，没有改变的就直接用之前的
+            class MyTest extends React.Component {
+                state = {
+                    date:new Date()
+                }
+
+                componentDidMount(){
+                    setInterval(() => {
+                        this.setState({
+                            date:new Date()
+                        })
+                    }, 1000);
+                }
+                render(){
+                  
+                    return (
+                        <div>
+                            <h1>当前时间</h1>
+                            <input type="text"/>
+                            <div>现在是：{this.state.date.toString()}</div>
+                        </div>
+                    )
+                }
+            
+            }
+
+            ReactDOM.render(<MyTest count={11}/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

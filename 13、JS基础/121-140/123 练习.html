@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 200px;   
+            height: 200px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <script>
+        let box1 = document.getElementById("box1")
+
+        //先设置两个全局的变量，才能使用
+        let move = 0;
+        let speed = 20;
+
+        
+        setInterval(() => {
+                
+                //就是判断他按上ctrl的时候 给他加速
+                
+                switch(move){
+                    case 37: box1.style.left = box1.offsetLeft - speed+"px";
+                    break;
+                    case 38: box1.style.top = box1.offsetTop - speed+"px";
+                    break;
+                    case 39: box1.style.left = box1.offsetLeft + speed+"px";
+                    break;
+                    case 40: box1.style.top = box1.offsetTop + speed+"px";
+                    break;
+
+                
+                }
+
+            }, 30);    
+            
+            
+        document.onkeydown = function(e) {
+            //按下ctrl的时候速度变成50
+            if(e.ctrlKey){
+                speed = 50;
+            }
+            
+            move = e.keyCode 
+          
+        };
+
+        document.onkeyup = function(){
+            //设置方向为 0 或者是其他的按键吗  他就不会动了
+            move = 0;
+
+            //但键盘弹起的时候。速度恢复到20，以免导致按下ctrl的时候速度一直保持在50
+            speed =20;
+        }
+    </script>
+</body>
+</html>

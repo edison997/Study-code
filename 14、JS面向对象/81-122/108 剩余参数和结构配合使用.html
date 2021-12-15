@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数和结构配合使用</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3];
+        let [s,...s2] = arr;
+        console.log(s)  //输出1
+        console.log(s2) //输出的是2，3组成的数组
+
+        //...s2 就是代表剩余的参数，而且会把剩余的参数放在一个数组里面装起来
+    </script>
+</body>
+</html>

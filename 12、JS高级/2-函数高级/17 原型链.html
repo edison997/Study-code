@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+<!-- 
+    1.原型链
+      -访问一个对象的属性时
+        -现在自身属性中查找，找到返回
+        -如果没有，在沿着__proto__这条链向上查找，找到返回
+        -如果没找到，返回undefined
+      -别名：隐式原型链
+      -作用：查找对象的属性（方法）
+    2.构造函数/原型/实体对象的关系
+    3.构造函数/原型/实体对象的关系  
+ -->
+
+    <script>
+        console.log(Object)
+        console.log(Object.prototype)
+        console.log(Object.prototype.__proto__)
+        function Fn() { 
+            this.test1 = function (){
+                console.log("test1")
+            }
+         }
+
+         //prototype是object的实例，所以他上面都有__proto__
+         console.log(Fn.prototype.__proto__)
+
+         Fn.prototype.test2 = function (){
+             console.log("test2")
+         }
+
+         let fn = new Fn();
+
+         fn.test1();
+         fn.test2();
+        //  fn.test3();
+        console.log(fn.toString())
+        console.log(fn.test3)
+      
+     
+       
+    </script>
+</body>
+</html>
+
+

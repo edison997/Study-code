@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>引出生命周期</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            //生命周期回调函数===生命周期钩子函数===生命周期函数===生命周期钩子   都是代表的一个意思
+            class MyTest extends React.Component {
+                
+                state = {
+                    opacity:1
+                }
+
+                //卸载组件
+                death = () => {
+                    ReactDOM.unmountComponentAtNode(document.getElementById('box'))
+                }
+
+                //组件挂在完毕
+                componentDidMount() {
+                    this.timer = setInterval(() => {
+                        //获取原来的值 === let opacity = this.state.opacity
+                        let {opacity} = this.state
+
+                        opacity -= 0.1
+
+                        if(opacity <= 0) opacity = 1;
+
+                        //属性名和值的名字一样就写一个
+                        this.setState({opacity})
+                    }, 200);
+                }
+
+                // 组件将要卸载
+                componentWillUnmount(){
+                    clearInterval(this.timer)
+                }
+
+
+                //render 会被调用1+n次    state的状态改变一次，他就会调用一次
+                render(){
+                    console.log("render")
+                    return (
+                        <div>
+                            <h2 style={{opacity:this.state.opacity}}>React学不会怎么办？</h2>
+                            <button onClick={this.death}>淦就完了</button>
+                        </div>
+                    )
+                }
+            
+            }
+
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

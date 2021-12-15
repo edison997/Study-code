@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的四个方法</title>
+    <script>
+        //后面跟的都是括号，因为都是调用的方法
+        // push：在数组的最后一位上添加一个或多个,
+        //pop:在数组的最后一位删除
+        //unshift：在数组的开头添加一个或多个
+        //shift:删除第一个元素
+
+        let arr = [1,2,3]
+
+        //push可以添加多个元素到数组的末尾，并且更新数组内容
+
+        //这样的方法会将数组的长度作为返回值返回
+        let result = arr.push(4,4)
+
+        console.log(arr)
+        //所以result打出来是数组的长度
+        console.log(result)
+
+        //调用一次，删除一次
+        arr.pop()
+        //会直接返回你删除的元素给你
+        let result2 = arr.pop()
+        console.log(arr)
+        console.log(result2)
+
+        //也是可以添加一个或者多个
+        arr.unshift(99,39)
+        //还是返回长度
+        let result3 = arr.unshift(232,34)
+        console.log(arr)
+        console.log(result3)
+
+
+        arr.shift()
+        //还是返回删除的元素给你
+        let result4 = arr.shift()
+
+        console.log(arr)
+        console.log(result4)
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width:980px;
+            height:600px;
+            margin: 100px auto;
+            padding: 10px 0;
+            background-color: #bfa;
+            position:relative;
+            overflow:hidden;
+            
+        }
+        img {
+            width: 960px;
+            height: 600px;
+        }
+        #imglist {
+            /* 如果这里不设置宽度，ul宽度就会继承父元素的宽度,会导致下面的浮动没用 */
+            /* width:3840px; */
+            /* 在js中设置，可以随图片的数量而自动改变width */
+            position: absolute;
+        } 
+        #imglist li {
+            list-style: none;
+            float: left;
+            margin: 0 10px ;
+            
+        }  
+
+        #alist {
+            /* 兄弟元素的绝对定位，后面的就显示在上面，不用设置z-index */
+            position:absolute;
+            bottom: 30px;
+            /* 想要居中 ，left的算法  1.父元素的长度 - 此元素的长度 /2
+            
+            980-20x4-10x8 =410
+            */
+            /* left: 410px;  还是用js动态写   */
+        }
+        #alist a{
+            /* 浮动可以把行内元素变成块元素，可以设置宽高，背景颜色等 */
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            margin: 0 10px;
+            opacity: 0.5;
+        }
+
+         #alist a:hover {
+             background-color: black;
+         }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="imglist">
+            <li><img src="../121-140/img/1 (1).jpg" alt=""></li>
+            <li><img src="../121-140/img/1 (2).jpg" alt=""></li>
+            <li><img src="../121-140/img/1 (3).jpg" alt=""></li>
+            <li><img src="../121-140/img/1 (4).jpg" alt=""></li>
+             <li><img src="../121-140/img/1 (1).jpg" alt=""></li>
+        </ul>
+        <div id="alist">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+
+
+
+
+    <script src="133tools定时器.js"></script>
+    <script>
+        let imglist = document.getElementById("imglist");
+        let img = document.getElementsByTagName("img");
+        let box = document.getElementById("box");
+        let alist = document.getElementById("alist");
+        let a = document.getElementsByTagName("a");
+        //根据图片的数量，自动改变ul的长度
+        imglist.style.width = img.length*980+"px";
+        //这历史设置小方块的居中  offsetWidth 这个就是盒子模型的宽
+        alist.style.left = (box.offsetWidth - alist.offsetWidth)/2+"px";
+
+        let index = 0;
+        a[index].style.backgroundColor = "black";
+        
+        for(let i=0;i<a.length;i++){
+            a[i].num = i;
+            a[i].onclick = function(){
+                clearInterval(timer);
+                index = this.num;
+                console.log(this.num);
+                // imglist.style.left = -index*980 +"px";
+
+                //直接使用外联中的move函数
+                move(imglist,980,-980*index,"left",function(){
+                    //开启自动切换
+                    auto();
+                });
+                setA();
+            };
+        }
+
+
+        //创建一个方法用来设置a的样式
+        function setA(){
+            //判断当前索引是不是最后一张
+            if(index >= img.length-1){
+
+                index = 0;
+
+                imglist.style.left = 0;
+
+
+            }
+
+            for(let i=0; i<a.length;i++){
+                //去掉内联样式中的红色，让样式表中的红色生效
+                a[i].style.backgroundColor ="";
+            }
+
+            a[index].style.backgroundColor = "black";
+        }
+
+
+        //创建自动切换图片的函数
+        let timer ;
+        function auto(){
+            timer = setInterval(() => {
+                //让索引自增
+                index++;
+                move(imglist,980,-980*index,"left",function(){});
+                setA();
+            }, 2000);
+
+            
+        }
+
+        auto();
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

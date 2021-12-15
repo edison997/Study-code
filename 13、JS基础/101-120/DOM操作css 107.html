@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM操作css</title>
+    <style>
+        #box {
+            width:200px;
+            height:200px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">点我</button>
+    <button id="btn1">点我读取</button>
+
+
+    <script>
+        let btn1 = document.getElementById("btn1");
+        let btn = document.getElementById("btn");
+        let box = document.getElementById("box");
+
+        btn.onclick = function(){
+            //通过style设置的的样式都是内联样式，优先级高，改不了！important,这是最高优先级，js也改不了
+            box.style.width = "100px"
+            box.style.height = "100px"
+            //把css中的 - 直接变成驼峰命名 
+            box.style.backgroundColor = "yellow"
+        }
+
+        //只能读取内联样式，无法读取样式表中的样式
+        btn1.onclick = function(){
+            box.innerHTML = box.style.width;
+            console.log(box.style.width)
+        }
+
+    </script>
+</body>
+</html>

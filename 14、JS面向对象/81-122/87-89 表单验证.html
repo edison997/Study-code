@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用正则进行表单验证</title>
+    <style>
+        .yes {
+            color:green;
+        }
+
+        .no {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <ul>
+            <!-- 手机号验证 -->
+            <li>
+                手机号：
+                <input type="text" id="telInput">
+                <span></span>
+            </li>
+            <li>
+                QQ：
+                <input type="text" id="qqInput">
+                <span></span>
+            </li>
+            <li>
+                昵称：
+                <input type="text" id="nameInput">
+                <span></span>
+            </li>
+            <li>
+                短信验证码：
+                <input type="text" id="msgInput">
+                <span></span>
+            </li>
+            <li>
+                登录密码：
+                <input type="text" id="pasInput">
+                <span></span>
+            </li>
+            <li>
+                确认密码：
+                <input type="text" id="passWord">
+                <span></span>
+            </li>
+        </ul>
+
+        <button type="submit">提交</button>
+    </form>
+   <script src="87-89 表单验证.js"></script>
+</body>
+</html>

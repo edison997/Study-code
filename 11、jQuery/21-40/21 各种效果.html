@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>操作类的区别</title>
+        <style>
+            .one {
+                width: 200px;
+                height: 200px;
+                background-color: #bfa;
+                transition: all 1s;
+            }
+
+            .two {
+                background-color: aquamarine;
+                transform: rotate(360deg);
+            }
+        </style>
+    </head>
+
+    <body>
+        <button>显示</button>
+        <button>隐藏</button>
+        <button>切换</button>
+        <div class="one"></div>
+        <script src='../jquery.min.js'></script>
+        <script>
+          $("button").eq(0).click(function(){
+              $(".one").show(1000,function () { 
+                  console.log(111)
+               });
+          })  
+          $("button").eq(1).click(function(){
+              $(".one").hide(1000,function () { 
+                  console.log(111)
+               });
+          })  
+          $("button").eq(2).click(function(){
+              $(".one").toggle();
+          })  
+
+          //一般情况下，我们都不加参数直接显示隐藏就行了
+        </script>
+    </body>
+
+</html>

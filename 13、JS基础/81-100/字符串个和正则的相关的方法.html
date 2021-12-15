@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串和正则的相关方法</title>
+
+    <script>
+        let str = "1a2b3c4d5e6"
+       
+        let res = str.split("c");
+        console.log(res)
+
+         //split(),传一个正则表达式作为参数
+         let res2 = str.split(/[A-z]/)
+         console.log(res2)
+
+         //search(),搜索字符串中是否含有指定的内容,这个方法和indexof 的返回值是一样的，有的话直接返回下标，没有的话返回-1
+
+         let str2 = "http wwww nab nbl"
+
+         res3 = str2.search("a")
+         res4 = str2.search(/b[nbl]/)
+         console.log(res3)
+         console.log(res4)
+          
+        //match()
+         let str11 = "1a2b3c4d5e6F7Gaa"
+
+        //i是忽略大小写，g是全局，不然就只会返回一个a
+         r = str11.match(/[a-z]/ig)
+        //这里返回的是一个数组对象 
+         console.log(r)
+         console.log(Array.isArray(r))
+
+         //replace() 替换 ,要替换的写在前面，新的内容写在后面
+         
+         rr = str11.replace("a","!!")
+         console.log(rr)
+
+         rr11 = str11.replace(/[a]/ig,"")
+         console.log(rr11)
+         rr22 = str11.replace(/[a-z]/ig,"")
+         console.log(rr22)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

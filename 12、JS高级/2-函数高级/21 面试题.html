@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题</title>
+</head>
+<body>
+    <script>
+        //测试题1
+
+        let A = function(){
+
+        }
+
+        A.prototype.n = 1 
+        let b = new A();
+        //他创建了一个新的内存地址，所以b的prtotype是看不到的 他只能看到之前的
+        A.prototype = {
+            n:2,
+            m:3
+        }
+        let c = new A()
+        console.log(b.n,b.m,c.n,c.m)  //1 u 2 3
+
+
+        //测试题2
+        let F = function(){
+            }
+
+        Object.prototype.a = function(){
+            //这上面的a 都能看到，就是最后的object上面的toString（）方法一样，就是最后的额object
+            console.log("A")
+        } 
+        Function.prototype.b = function(){
+            console.log("B")
+        }   
+
+        let f = new F()
+        console.log(Object.prototype)
+        console.log(f)
+        console.log(Function.prototype)
+
+        f.a()
+        f.b()
+        F.a()
+        F.b()
+
+
+
+
+    </script>
+</body>
+</html>

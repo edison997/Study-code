@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素操作</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+
+    <script src="../jquery.min.js"></script>
+    <script>
+        let sum = 0;
+        let arr = ["red","pink","green"]
+
+        // 一、便利dom对象
+        $('div').each(function (index,domele){
+            //第一个是索引值
+            console.log(index)
+            //第二个是dom对象,他就是每个div
+            console.log(domele)
+            //因为domele是dom 对象，所以我们先把他转化成jq对象才能使用jq 的方法
+            $(domele).css("color",arr[index])
+            sum += parseInt($(domele).text())
+        })
+        console.log(sum)
+
+        //二、遍历数据
+        $.each(arr,function(index,ele){
+            console.log(index)
+            console.log(ele)
+        })
+
+        //   这相当于for in
+        $.each({name:"zs",age:14},function(i,ele){
+            console.log(i)  //属性名
+            console.log(ele) //属性值
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>组合继承</title>
+    </head>
+
+    <body>
+        <!-- 
+        方式二：借用构造函数继承（假的）
+            1.套路
+             -1.定义父类型的构造函数
+             -2.定义子类型的构造函数
+             -3.在子类型构造函数中调用父类型的构造函数
+            2.关键
+             1.在子类型的构造函数中通用call（）调用父类型的构造函数 
+        方式三：原型链+借用构造函数的组合继承
+            1，利用原型链实现对父类型对象的方法继承
+            2.利用call（）借用父类型构建函数初始化相同属性     
+     -->
+
+        <script>
+            function Per(name, age) {
+                this.name = name
+                this.age = age
+
+            }
+            Per.prototype.setName = function (name) {
+                this.name = name
+            }
+
+            function Stu(name, age, gender) {
+                //只是调用了上面的属性，并不是真正意义上的继承
+                Per.call(this, name, age) //this.Per(name,age)
+                this.gender = gender
+            }
+
+
+
+            Stu.prototype = new Per(); //继承最重要的一步
+            Stu.prototype.constructor = Stu //改变指向
+            Stu.prototype.setGender = function (gender) { //不能写到new per（）的前面，不然设置不了方法，会被覆盖
+                this.gender = gender
+            }
+            
+            let p = new Stu("z", 19, "nv")
+            p.setName("wuwuwu")
+            p.setGender("nanana")
+            console.log(p)
+        </script>
+    </body>
+
+</html>

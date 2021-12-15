@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式89</title>
+    <script>
+        //检查字符串中是否含有点  .
+        // . 点表示任意字符，所以 /./ 这样写不管写什么内容都是true
+        // 所以要些成  /\./ 才表示.
+        let reg = /\./
+
+        //而斜杠 /\\/  这个才表示\
+        reg2 = /\\/
+        console.log(reg.test("d."))
+        console.log(reg2.test("b\\"))
+
+        
+        //去除字符串前后的空格
+        let str = "      he   llo     "
+        str = str.replace(/^\s*|\s*$/g,"")
+        console.log(str)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

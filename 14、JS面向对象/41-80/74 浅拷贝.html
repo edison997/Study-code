@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝</title>
+</head>
+<body>
+    <!-- 
+        浅拷贝只是拷贝一层，更深层次对象级别的只拷贝引用
+
+        深拷贝拷贝多层，每一级的数据都会拷贝
+     -->
+
+     <script>
+         let obj = {
+             name:"ww",
+             age:19,
+             msg:{
+                 name:"hh",
+                 age:15
+             }
+         }
+
+         let o = {}
+    //1.第一中方法
+        //  for (let  k in obj) { //k是键  obj[k]是值
+        //      o[k] = obj[k]
+        //  }
+
+        //  o.msg.age = 1
+        //  console.log(o)
+        //  console.log(obj)
+    //2.第二种方法
+        //开发中都是用的这个
+         Object.assign(o,obj)
+         o.msg.age = 5  
+        /*  这个操作依然会影响到原来对象的中的值，因为是浅拷贝，
+        只拷贝了一层，第二层的对象值是拷贝了地址而已，
+        o和obj都是指向的是同一个内存地址 */
+         console.log(o)
+         console.log(obj)
+
+    //3.第三种方法
+        let a = JSON.parse(JSON.stringify(obj))
+        console.log(a);
+        a.msg.age = 111
+        console.log(obj)
+     </script>
+</body>
+</html>

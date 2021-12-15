@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数</title>
+</head>
+<body>
+    <script>
+        /* 
+        。。。args -有几个参数他就能接收几个参数 
+                    -他本身是一个数组的形式，所以他能使用forEach的方法
+        */
+        
+        const sum = (...args) => {
+            let total = 0;
+            args.forEach(item => total += item)
+            return total;
+        }
+
+        console.log(sum(22,33))
+    </script>
+</body>
+</html>

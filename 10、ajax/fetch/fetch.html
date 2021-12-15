@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>axiso</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    </head>
+
+    <body>
+        <button>fetch</button>
+        
+       
+
+        <script src="../jquery.min.js"></script>
+        <script>
+            let btns = document.getElementsByTagName('button')
+
+            // axios.defaults.baseURL = 'https://api.example.com';
+
+            btns[0].onclick = function () {
+                fetch('http://localhost:8080/fetch-server?vvv=20',{
+                    method:"POST",
+
+                    // headers:{
+                    //     name:"zd"
+                    // },
+
+                    body:'username=admin && password=admin'
+                }).then(res=>{
+                    //  console.log(res)
+                    // return res.text();
+                    return res.json();
+                }).then(res=>{
+                    console.log(res)
+                })
+            }
+
+
+           
+        </script>
+    </body>
+
+</html>

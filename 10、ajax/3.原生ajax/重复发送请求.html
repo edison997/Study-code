@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>取消请求</title>
+    </head>
+
+    <body>
+        <button>点击发送</button>
+    
+        <script>
+            const btns = document.querySelector('button')
+
+            let xhr = null;
+
+            let isSending = false  //是否在发送ajax请求
+            btns.onclick = function () {
+                //如果是在发送就结束上一次的请求在来发送
+                if(isSending) xhr.abort();
+
+
+                xhr = new XMLHttpRequest();
+
+                isSending = true;  //发送时是true
+
+                xhr.open('GET', 'http://172.16.108.156:8080/delay')
+
+                xhr.send()
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState ===4 ) {
+                        //发送一次完成后变为false
+                        isSending = false;
+                    
+                    }
+                }
+            }
+
+        
+        </script>
+    </body>
+
+</html>

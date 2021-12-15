@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标滚动事件</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <script>
+        /* 
+        onwheel 滚轮事件
+        */
+        let box1 = document.getElementById("box1");
+        box1.onwheel = function (e) { 
+            // alert(111)
+
+            console.log(e)
+         }
+    </script>
+</body>
+</html>

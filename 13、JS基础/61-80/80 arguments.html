@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arguments</title>
+    <script>
+        //在调用函数时候，浏览器否会返回两个隐含的参数
+        //1.this
+        //2.arguments
+
+
+
+        function fun(a,b){
+            console.log(arguments instanceof Array)
+            console.log(Array.isArray(arguments))
+            console.log(arguments.length)
+            //就像相当于把实参看成一个数组，然后使用方法和数组一样
+            console.log(arguments[0])
+            //就是打印出所有的的内容
+            console.log(arguments.callee)
+        }
+
+        //实参都保存在argumens中
+        fun("he",true,1)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

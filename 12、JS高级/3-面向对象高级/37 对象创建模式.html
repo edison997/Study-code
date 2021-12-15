@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>对象创建模式</title>
+    </head>
+
+    <body>
+        <!-- 
+        方式一：objec构造函数
+            -套路：先创建object对象，再动态添加属性/方法
+            -适用场景：起始时不确定对象内部数据
+            -问题：语句太多
+        方式二：对象字面量
+            -套路:使用{}创建对象，同时指定属性/方法
+            -适用场景：起始时对象内部数据是确定的
+            -问题：如果创建多个对象，有重复代码
+        方式三：工厂模式
+            -套路：通过工厂函数动态创建对象并返回
+            -适用场景：需要创建多个对象
+            -问题：对象没有一个具体的类型。都是object    
+        方式四：自定义构造函数模式
+            -套路：自定义构造函数，通过new创建对象
+            -适用场景：需要创建多个类型确定的对象
+            -问题：每个对象都有形同的数据，浪费内存
+        方式五：构造函数加原型组合的模式
+            -方法加到原型上去，其他和和上面一样    
+     -->
+        <script>
+            //方式一
+            let p = new Object()
+            p.name = "tom"
+            p.age = 30
+            p.setName = function (name) {
+                this.name = name
+            }
+            p.setName("SAM")
+            console.log(p)
+
+            //方式二
+            let p2 = {
+                name: "wnagwu",
+                age: 29,
+                setName: function (age) {
+                    this.age = age
+                }
+            }
+            p2.setName(33)
+            console.log(p2)
+
+            //方式三
+
+            function person(name, age) { //返回一个对象的函数===》工厂函数
+
+                let obj = {
+                    name: name,
+                    age: age,
+                    setName: function (name) {
+                        this.name = name
+                    }
+                }
+                return obj
+            }
+
+            let p3 = person("tom", 55)
+            let p4 = person("csscsc", 66)
+            console.log(p3, p4)
+
+
+
+            function animal(name, age) { //返回一个对象的函数===》工厂函数
+                let obj = {
+                    name: name,
+                    age: age,
+                    setName: function (name) {
+                        this.name = name
+                    }
+                }
+                return obj
+            }
+            let p5 = animal("tom", 55)
+            let p6 = animal("csscsc", 66)
+            console.log(p5, p6)
+
+            //方式四
+            function Person(name, age) {
+                this.name = name
+                this.age = age
+                this.setName = function (name) {
+                    this.name = name
+                }
+            }
+
+            let per = new Person("ls", 11)
+            per.setName("ww")
+            console.log(per)
+            console.log(per instanceof Person)
+
+
+            function Animal(name, age) {
+                this.name = name
+                this.age = age
+                this.setName = function (name) {
+                    this.name = name
+                }
+            }
+
+            let ani = new Animal("", 11)
+            ani.setName("cat")
+            console.log(ani)
+            console.log(ani instanceof Animal)
+
+            //方式五
+            function Person2(name, age) {
+                this.name = name
+                this.age = age
+        
+            }
+            Person2.prototype.setName = function(name){
+                this.name = name
+            }
+
+            let per2 = new Person2("ls", 11)
+            per2.setName("ww")
+            console.log(per2)
+            console.log(per2 instanceof Person2)
+        </script>
+    </body>
+
+</html>

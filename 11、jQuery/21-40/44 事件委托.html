@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+    <ol>
+
+    </ol>
+
+    <script src="../jquery.min.js"></script>
+    <script>
+        //给他的父元素绑定事件，点击子元素也会执行(事件委托)
+        $("ul").on("click","li",function(){
+            console.log(111)
+        })
+
+        //可以个未来动态创建的元素绑定事件，很重要的一个功能
+        $('ol').on("click","li",function(){
+            console.log(222)
+        })
+
+        let li = $("<li>wewe </li>")
+        $("ol").append(li)
+    </script>
+</body>
+</html>

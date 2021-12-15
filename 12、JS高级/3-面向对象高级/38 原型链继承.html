@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链继承</title>
+</head>
+<body>
+    <!-- 
+        方式一：原型链继承
+           =套路 
+            1.定义父类型构造函数
+            2.给父类型的原型添加方法
+            3.定义子类型的构造函数
+            4.创建父类型的对象赋值给子类新的原型
+            5，将子类型原型的构造属性设置为子类型
+            6.给子类型的原型添加方法
+            7.创建子类型的对象：可调用父类型的方法
+           -关键
+            1.子类型的原型为父类型的一个实例对象 
+     -->
+
+
+     <script>
+        //父类型
+        function Sup(){
+
+        }
+        //在原型添加方法
+        Sup.prototype.showSup = function(){
+            console.log(111)            
+        }
+
+
+
+        //子类型
+        function Sss(){
+
+        }
+        //这里就是继承父类型的方法 把 Sss.prototype变成父类型的实例
+        Sss.prototype = new Sup();
+        //让子类型的原型constructor指向子类型，不加的话就是指向Sup
+        Sss.prototype.constructor = Sss
+        Sss.prototype.showSss = function(){
+            console.log(222)
+        }
+        console.log(Sss.prototype)
+        let s = new Sss();
+        //子类型调用父类型的方法
+        s.showSup();
+        //调用子的方法
+        s.showSss();
+        console.log(s.constructor)
+     </script>
+</body>
+</html>

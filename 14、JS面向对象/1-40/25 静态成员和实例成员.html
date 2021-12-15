@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态和实例成员</title>
+</head>
+<body>
+    <!-- 
+        1.实例成员
+            -就是构造函数内部通过this添加的成员，实例成员就只能通过实例化对象来访问
+        2.静态成员
+            -在构造函数本身上添加成员，这样实例对象是不能访问到的
+            Obj3.sex = "男"    
+     -->
+    <script>
+        function Obj3(name,age){
+        this.name = name;
+        this.age = age;
+        this.sayName = function(){
+        console.log("111")
+        }
+
+
+        }
+
+        let p = new Obj3("zhangsan",19);
+        p.sayName();
+
+        console.log(p)
+    </script>
+</body>
+</html>

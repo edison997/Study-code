@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM查询</title>
+    <script>
+        window.onload = function () { 
+            let btn = document.getElementById("btn")
+            btn.onclick = function(){
+                let ctiy = document.getElementById("city")
+                console.log(city)
+                //记住这个s  不管是一个还是多个 都要返回一个类数组
+                let lis = city.getElementsByTagName("li")
+                console.log(lis.length)
+
+                for(let i=0; i<lis.length;i++){
+                    //这个表示返回li中值
+                    //还有一种就是表示向其中添加什么内容
+                    let text = lis[i].innerHTML
+                    console.log(text)
+                }
+            }
+
+
+            let btn2 = document.getElementById("btn2")
+            btn2.onclick = function(){
+                 let ctiyNode = document.getElementById("city").childNodes
+                 
+                 console.log(ctiyNode.length)
+                 for(let i=0;i<ctiyNode.length; i++){
+                     let a = ctiyNode[i]
+                     //一共含有九个节点，空格也算是节点
+                     console.log(a)
+                 }
+
+                 //这个就是元素，就是四个li
+                
+                 let cityTag = document.getElementById("city").children
+                 console.log(cityTag)
+            }
+
+
+            let btn3 = document.getElementById("btn3")
+            btn3.onclick = function(){
+                //获取第一个子节点，和lastchild是一样的用法
+                let cf = document.getElementById("city").firstChild
+                console.log(cf)
+                //这个是获取第一个字元素
+                let cft = document.getElementById("city").firstElementChild
+                console.log(cft)
+            }
+
+            
+         }
+    </script>
+</head>
+<body>
+    <ul id="city">
+        <li>北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li>深圳</li>
+    </ul>
+    <button id="btn">获取city中的li</button>
+    <button id='btn2'>获取子节点</button>
+    <button id='btn3'>获取第一个子节点</button>
+</body>
+</html>

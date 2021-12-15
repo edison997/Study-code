@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档的加载</title>
+
+    <!-- 写在上面的话就应该这样写，先加载js文件，不然不会执行js中内容 -->
+    <!-- <script>
+        window.onload = function(){
+            let btn = document.getElementById("btn")
+
+            btn.onclick = function(){
+                console.log("你吃屎啦")
+            }
+        }
+    </script> -->
+   
+</head>
+<body>
+
+    <!-- 单线程执行，要等到页面加载完成之后才来执行，所以script 要放在 body的后面，不然页面从上往下加载的时候，可能会导致错误 -->
+    <!-- 如果想把script放在head里面，使用window.onload, 把所有代码全部都写在这里面 -->
+    <!-- 最优的还是写在下面  -->
+    <button id="btn">我是按钮</button>
+
+    <script>
+        let btn = document.getElementById("btn")
+
+        btn.onclick = function(){
+            console.log("你吃屎啦")
+        }
+    </script>
+</body>
+</html>

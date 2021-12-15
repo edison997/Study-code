@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+    <script>
+        //正则表达式
+        //定义一些规则
+
+        // 语法 let 变量 = new RegExp("正则表达式","匹配模式")
+
+        let reg = new RegExp("a");   // 这哥正则是检测字符串里是否含有a，并且是严格区分大小写的 
+
+        let str = "a"
+        //test() 测试是否符合正则
+        let res = reg.test(str)
+        console.log(res)
+        console.log(reg.test("b"))
+
+        //这里面的第二个参数是 i 就是忽略大小写，  g  就是全局匹配模式
+        let reg2 = new RegExp("b","i")   
+        console.log(reg2.test("adadaB"))
+        
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

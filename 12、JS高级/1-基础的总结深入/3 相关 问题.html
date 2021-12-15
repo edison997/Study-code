@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相关问题</title>
+</head>
+<body>
+    <!-- 
+        1.undefined 和 null 的区别?
+            undefined 代表定义为赋值 
+            null 代表了定义了，赋值为null
+        2.什么时候给变量赋值null？
+            初始赋值，表明将要赋值为对象
+            使用结束前（垃圾回收，对没有用的数据赋值为null，进行回收，提高性能）
+        3.严格区分变量类型和数据类型？
+            数据类型：
+                基本类型 对象类型
+            变量类型：（是没有类型的，他是指变量内存值得类型）
+                基本类型 ：保存的是基本数据类型
+                引用类型：保存的是地址值；（堆的值）   熟悉堆和栈
+
+     -->
+
+
+
+
+     <script>
+         //实例：实例对象
+         //类型：类型对象
+
+         function Person(name,age){
+             this.name = name;
+             this.age = age;
+         }
+         let p = new Person("TON",12);  // 根据类型创建实例对象
+         console.log(p);
+
+        // 1.undefined 和 null 的区别?
+        let a;
+        console.log(a);
+
+         a = null;
+        console.log(a);
+
+        //2.什么时候给变量赋值null？
+        let b = null;  //初始赋值为null，表明将要赋值为对象
+        b = ["woda",111]; //确定赋值对象赋值
+        b = null; //让b指向的对象为垃圾对象（垃圾回收，对没有用的数据赋值为null，进行回收，提高性能）
+
+
+        //3.严格区分变量类型和数据类型？
+         let c = {}   //就相当于c就是地址   {}就是内存，c的类型就是内存的属性
+
+
+
+
+     </script>
+</body>
+</html>

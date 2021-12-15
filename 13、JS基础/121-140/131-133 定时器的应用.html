@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器的应用</title>
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            top: 200px;
+        }
+        #b {
+            border:1px solid black;
+            height: 800px;
+            width: 0;
+            position:absolute;
+            left: 800px;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <button id="btn">点击按钮后 Box1 向右移动</button>
+    <button id="btn2">向左移动</button>
+    <button id="btn3">test</button>
+        <br/>
+        <br/>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="b"></div>
+
+
+    <script>
+        let btn = document.getElementById("btn");
+        let btn2 = document.getElementById("btn2");
+        let btn3 = document.getElementById("btn3");
+        let box1 = document.getElementById("box1");
+        let box2 = document.getElementById("box2")
+        //声明一个全局变量 下面关闭定时器的时候要用
+        //定时器标识保存在a里面，但是他会影响定时器的指向 ，box1和box2会互相影响，所以这个不能要了
+        // let a ;           ======================================================
+      
+        //因为调用多个，就可以写成一个公用的函数  封装思想  减少代码，提高性能
+        //1.第一步就是确定参数  2.考虑情况写判断
+
+        //obj 元素  speed 速度  range 距离范围  time执行时间  dir方向
+
+        function move(obj,speed,range,attr,callback){
+
+            clearInterval(obj.a);
+
+            //获取元素的位置的
+            let current = parseInt(getStyle(obj,attr));
+                if(current > range){//判断到底是在我们想要去的位置的左边还是右边，如果是元素原来的位置大于我们想要去去的位置，就直接给他赋值为一个负数，就不用让操作的人判断位置了
+                    speed = -speed; 
+                }
+
+                console.log(current)
+
+                //直接在穿入对象上加一个a属性，镇压也能够就有指向性，就不会混乱了
+                obj.a = setInterval(function(){
+                //再次获取旧元素的位置
+                
+                let oldL = parseInt(getStyle(obj,attr));
+                //让元素移动起来
+                let newL = oldL+speed;
+
+                if(speed<0 && newL<range || speed>0 && newL>range){
+                    newL = range;
+                }
+
+                obj.style[attr]= newL+"px";
+
+                if(newL == range ){
+                    //达到效果，关闭定时器
+                    clearInterval(obj.a)
+                    //动画执行完毕，调用会带你函数，再次执行其他内容
+
+                    // if(callback){
+                    //     callback();
+                    // }
+                    //这个是为了判断不传回调函数的情况，有就调用，没有就不调用
+                    callback && callback();//这个就是等于上面那个
+                }
+           },30);
+        }
+        btn.onclick = function(){
+            move(box1,20,800,"top");
+        } ;
+        btn2.onclick = function(){
+            move(box1,30,600,"width")
+        };
+
+
+        //利用套娃的回调函数，可以实现简单的动画效果
+        btn3.onclick = function(){
+            move(box2,10,100,"top",function(){
+                move(box2,30,600,"width",function(){
+                    move(box2,30,600,"height",function(){
+                        move(box2,20,800,"left");
+                        
+                })
+                })
+            });
+
+           
+        };
+
+        
+
+      
+
+        //判断兼容性的问题 ，这里是获取样式通用方法，那里都能用
+        function getStyle(obj,name) {//obj 就是传是哪个元素  name 就是css的方法，用字符串
+
+            // if(window.getComputedStyle){//就是在window里面找，有没有这个属性，有的话就返回第一个，没有就返回第二个
+            //     return getComputedStyle(obj,null)[name] 
+            // // getComputedStyle(box1,null).name   不能这样写，这样把name写死了，要用上面那个获取的方式
+            // }else{
+            //     return obj.currentStlye[name]
+            // }
+
+            //三元运算，和上面的是一个意思
+            return window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.currentStlye[name];
+            
+        }
+
+
+/*         btn.onclick = function () {
+            //清除多次点击，带来的的定时器重复的点击问题
+            clearInterval(a);
+
+            //定时器
+            a = setInterval(()=>{
+                //调用获取样式的方法，获取原始的left
+                //这里转换成整数才能进行计算
+               let oldL = parseInt(getStyle(box1,"left"));
+
+               //这里是相当于设置速度
+               let newL = oldL + 6;
+               //想要在固定的位置停止，需要给个判断，不然就可能超出预期的位置
+               if(newL > 800){
+                   newL = 800;  
+               }
+
+               //直接给把left值给他
+               box1.style.left = newL+"px";
+
+               //当他在800px的时候，就让他停止，就是关闭定时器
+               if(newL==800){
+                   
+                clearInterval(a);
+                }
+           },10);
+           
+        }
+ */
+/*         btn2.onclick = function(){
+
+            clearInterval(a);
+           a = setInterval(function(){
+
+                let oldL = parseInt(getStyle(box1,"left"));
+                let newL = oldL-6;
+                if(newL <= 0){
+                    newL = 0;
+                }
+                box1.style.left = newL+"px";
+
+                if(newL == 0 ){
+                    clearInterval(a)
+                }
+
+        
+           },3);
+        }
+
+ */
+    </script>
+</body>
+</html>

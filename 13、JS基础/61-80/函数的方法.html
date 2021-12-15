@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的方法</title>
+    <script>
+        //call和apply都可以直接调用函数
+        function fun(){
+            alert(this)
+        }
+
+        obj = {
+            name:"小明",
+            say:function(){
+                alert(this.name)
+            }
+        }
+
+
+        obj2 = {name:"小红"}
+        // fun()
+
+        //这两个方法可以直接改变this的指向，传的谁就指向谁
+        // fun.apply(obj.name)
+        // fun.call(obj2.name) 
+        obj.say.apply(obj2)
+
+
+
+        function f(a,b){
+            console.log(a)
+            console.log(b)
+        }
+
+        obj3 = {name:"小明",age:19}
+        obj4 = {name:"小红",age:20}
+
+        f.apply(obj3,[2,3])
+        f.call(obj4,5,6)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.通过class关键字创建类，类名还是大写字母开头
+        2.类里面有个constructor函数，可以守传递过来的参数，同时返回给实例对象
+        3.constructor函数只要new生成实例时，就会自动调用这个函数，如果我们不写这个函数，类也会自动生成这个函数
+        4.生成实例 new不能省略
+        5.最后注意语法规范，创建类，类名后面不要加括号，生成实例后面要加，构造函数不用加function
+     -->
+    <script>
+        //1.创建类 class 
+        class Stu {
+            //属性都写到constructor里面
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+
+            //方法,多个方法之间不需要逗号隔开
+            say(song) {
+                console.log("111")
+                console.log(song)
+            }
+        }
+        
+        
+        //2.利用类创建对象 new
+        let a = new Stu("小明同学",3);
+        console.log(a);
+        a.say("离歌");
+    </script>
+</body>
+</html>

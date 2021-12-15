@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+</head>
+<body>
+    <h1>我说History</h1>
+    <button id="btn">回去</button>
+    <a href="124 BOM navigator.html">111</a>
+      <script>
+          //这个及时页面的数量
+        console.log(window.history.length);
+
+        let btn = document.getElementById("btn");
+        btn.onclick = function(){
+            //上一个页面
+            // history.back();
+            //下一个页面
+            // history.forward();
+            //负数上一个，正数下一个 也可以是多个页面
+            history.go(-2);
+        }
+    </script>
+</body>
+</html>

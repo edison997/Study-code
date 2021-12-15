@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题</title>
+</head>
+<body>
+    <script>
+        //1
+        let x = 10
+        function fun(){
+            console.log(x)
+        }
+
+        function show(f){
+            let x = 20
+            f();
+        }
+        show(fun)
+
+
+        //2
+        let fn = function(){
+            console.log(fn)
+        }
+        fn();
+
+        let obj = {
+            fn2: function(){
+                // console.log(fn2) // 这样输出会报错，作用域中找不到fn2
+                console.log(this.fn2)
+            }
+        }
+        obj.fn2()
+    </script>
+</body>
+</html>

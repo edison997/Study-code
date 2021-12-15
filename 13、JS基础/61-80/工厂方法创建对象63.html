@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用工厂方法创建对象</title>
+    <script>
+        let obj = {
+            name:"sss",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+
+        let obj1 = {
+            name:"和尚",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+
+        let obj2 = {
+            name:"八戒",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+
+
+        //上面的方法太笨了，使用工厂批量创建对象
+
+        function createP(name,age,gender,sayName) {
+
+            let obj = new Object()
+
+            obj.name = name,
+            obj.age = age,
+            obj.gender = gender
+            obj.sayName = function(){
+                console.log(this.name)
+            }
+
+            //将新的对象返回
+            return obj
+        }
+
+        let obj3 = createP("111",22,"nv")
+        let obj4 = createP("222",33,"nv")
+        let obj5 = createP("333",44,"nan")
+
+       console.log(obj3)
+       console.log(obj4)
+       console.log(obj5)
+       obj3.sayName()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

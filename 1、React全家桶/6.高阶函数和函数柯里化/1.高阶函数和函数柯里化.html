@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>高阶函数和函数柯里化</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+                /* 
+                1.高阶函数：如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数
+                    -若A函数，接收的参数是一个函数，那么A就是可以称之为高阶函数
+                    -若A函数，调用的返回值依然是一个函数，那么他就是高阶函数、
+
+                        -常见的高阶函数有：Promise setTimeout 数组的一些方法等等
+
+                2.函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式
+                */
+              
+
+            class MyTest extends React.Component {
+
+
+                state = {
+                    username:'',
+                    password:''
+                }
+               
+
+                saveData = (data)=> {
+                    // console.log(data)
+                    return (event)=> {
+                        //这里变量作为属性名就要方括号（对象的基础知识）
+                        this.setState({[data]:event.target.value})
+
+                        console.log(data,event.target.value)
+                    }
+                }
+                //这里一定要注意要用箭头函数
+                sub = (e)=>{
+                    e.preventDefault() //阻止表单提交
+                    console.log(this)
+                    alert(`${this.state.username}+${this.state.password}`)
+                }
+            
+                render(){
+
+                    return (
+                        <form onSubmit={this.sub}>
+                            用户名：<input onChange={this.saveData('username')} name="username" type="text"/>
+                            密 码：<input onChange={this.saveData('password')} name="password" type="password" />
+                            <button>登录</button>
+                        </form>
+                       
+                    )
+                }
+            }
+       
+            
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

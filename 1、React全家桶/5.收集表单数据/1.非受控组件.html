@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>非受控组件</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+        //非受控组件 就是带有输入框，登录之内的的组件
+            class MyTest extends React.Component {
+
+                //这里一定要注意要用箭头函数
+                sub = (e)=>{
+                    e.preventDefault() //阻止表单提交
+                    console.log(this)
+                    const {username,password} = this
+
+                    alert(`${username.value}+${password.value}`)
+                }
+            
+                render(){
+
+                    return (
+                        <form onSubmit={this.sub} >
+                            用户名：<input ref={c => this.username = c} name="username" type="text"/>
+                            密  码：<input ref={c => this.password = c} name="password" type="password" />
+                            <button>登录</button>
+                        </form>
+                       
+                    )
+                }
+            }
+       
+            
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

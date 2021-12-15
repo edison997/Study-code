@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置获取元素固有属性</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" title="111">111</a>
+    <input type="checkbox" name="" id="" checked>
+    <div index="1" data-index="2"></div>
+    <span>123</span>
+
+    <script src="../jquery.min.js"></script>
+    <script>
+        // 1.获取元素固有属性
+        //查看属性值
+        console.log($("a").prop("href"))
+        //修改属性值
+        $("a").prop("title","222")
+
+        $("input").change(function(){
+            console.log($("input").prop("checked"))
+        })
+
+
+        //2.自定义属性，通过attr（）获取
+        console.log($("div").attr("index"))
+        $("div").attr("index",3)
+        console.log($("div").attr("data-index"))
+
+
+        // 3.数据缓存data（），这里面的数据是存放在元素的内存里面
+        $("span").data("uname","zs")  //这里直接添加属性名字和值
+        console.log($("span").data("uname"))
+        //data-index用这个方式就不用，上面那样前面加个data 返回一个数字型
+        console.log($("div").data("index"))
+    </script>
+</body>
+</html>

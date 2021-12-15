@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则的括号总结</title>
+</head>
+<body>
+    <!-- 菜鸟教程有工具可以验证类 -->
+    <script>
+
+        //中括号。字符字符集合，匹配方括号中的任意字符
+        let reg = /^[abc]$/;
+
+        //大括号。量词符，里面表示重复次数
+        let reg4 = /^abc{3}$/;  //这个只让c重复三次
+        let reg2 = /^[abc]{3,6}$/; //让a b c 的任意一个都重复三次
+        //小括号。表示优先级 
+        let reg3 = /^(abc){3}$/;  //让abc 一起重复三次
+        console.log(reg3.test("abcabcabc"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="mBtn()">我是个按钮</button>
+
+
+    <script>
+
+        //事件就是用户和浏览器交互的作用
+        let btn = document.getElementById("btn")
+        //第一种绑定事件的方法，通过节点来绑定
+        btn.onclick = function (){
+            alert("你吃屎了吧")
+        }
+
+        //第二种绑定是通过直接在button上绑定事件
+        // function mBtn(){
+        //     alert("好帅啊")
+        // }
+
+    </script>
+
+</body>
+</html>

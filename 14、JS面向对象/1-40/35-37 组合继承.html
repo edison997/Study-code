@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>call的用法</title>
+    </head>
+
+    <body>
+        <script>
+            //父亲
+            function Obj(name, age) {
+                this.name = name;
+                this.age = age;
+
+
+            }
+            Obj.prototype.sayName = function () {
+                console.log("111")
+            }
+            let p = new Obj("zhangsan", 19);
+            p.sayName();
+
+            console.log(p)
+
+            //儿子
+            function Obj1(gender,name,age) { 
+                this.gender = gender
+                Obj.call(this,name,age)
+               
+                
+            }
+            Obj1.prototype = new Obj(); //这个要写到儿子添加方法的前面，不然会覆盖，儿子的方法
+            Obj1.prototype.constructor = Obj1  //因为上一步操作，导致构造函数的指向变成了Obj,所以这里我们要将他修正回来
+            Obj1.prototype.sayAge = function (){
+            console.log(222)
+            }
+            
+            // Obj.prototype.constructor = Obj1
+            let p1 = new Obj1("NAN","XXX",111);
+            console.log(p1.name)
+            console.log(p1) 
+            p1.sayName();
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>深拷贝</title>
+    </head>
+
+    <body>
+        <script>
+            let obj = {
+                name: "ww",
+                age: 19,
+                msg: {
+                    name: "hh",
+                    age: 15
+                },
+                color:["pink","black"]
+            }
+
+            let o = {}
+            //封装函数
+            function deepCopy(newobj,oldobj) {  
+                for(let k in oldobj){
+                    let item = oldobj[k]
+                    //数组的判断要写在对象判断的前面，一因为数组也属于对象类型
+                    if(item instanceof Array){
+                        //判断是否是数组
+                        newobj[k] = []
+                        deepCopy(newobj[k],item)
+                    }else if(item instanceof Object){
+                        //判断是否是对象
+                        newobj[k] = {}
+                        deepCopy(newobj[k],item)
+                    }else {
+                        //普通的数据类型
+                        newobj[k] = item;
+                        
+                    }
+                }
+            }
+
+            deepCopy(o,obj)
+            console.log(o)
+            o.msg.age = 1
+            console.log(obj)
+        </script>
+    </body>
+
+</html>

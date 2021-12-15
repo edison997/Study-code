@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡</title>
+    <style>
+      
+    </style>
+</head>
+<body>  
+    <ul id="u1"  style="background-color:#bfa">
+
+        <li><a href="javascript:;">我是超人</a></li>
+        <li><a href="javascript:;">我是超人22</a></li>
+        <li><a href="javascript:;">我是超人333</a></li>
+        
+    </ul>
+
+    <button id="btn">添加超人</button>
+
+    <script>
+        let u1 = document.getElementById("u1")
+        let btn = document.getElementById("btn")
+
+
+        //事件的委派，利用事件冒泡原理，给元素绑定到共同的祖先元素绑定事件，该元素都会有此事件
+        //所有li都会有点击事件，可以提高事件的性能
+        
+        u1.onclick = function(e) {
+            
+            
+            //谁绑定事件 this就指向谁
+            // console.log(this)
+            //event中的target 谁触发就是谁
+            console.log(e.target)
+
+            if(e.target.nodeName == "A"){  //这里的判断或者是给 a 标签加上类名  e.target.className == “”  也可以作为判断条件
+                alert(111)
+            }
+        }
+
+        btn.onclick = function(){
+            
+            u1.innerHTML += "<li>"+"<a href='javascript:;''>"+"我是超人333"+"</a>"+"</li>"
+
+        }  
+    </script>
+</body>
+</html>

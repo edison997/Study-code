@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es5中新增的语法</title>
+</head>
+<body>
+    <script>
+        //forEach 遍历数组
+        let arr = [4,5,6];
+        let sum = 0;
+        arr.forEach(function(val,index,array){
+            console.log("每个元素"+val,"每个下标"+index,"本身"+array)
+            sum += val
+        })
+        console.log(sum)
+
+        //filter 筛选数组
+        let arr1 = arr.filter(function(val,index){
+            return val>4
+            // return val % 2 === 0
+        })
+        console.log(arr1)
+
+
+        //some 查找数组中是否有满足条件的元素
+        let arr2 = arr.some(function (val) {
+            return val > 5;
+        })
+        console.log(arr2)
+
+        //map 方法按照原始数组元素顺序依次处理元素。
+        let arr3 = arr.map(function (val) {
+            return val*3
+        })
+        console.log(arr3)
+        //every 只要有一个不满足就返回false 和some相反
+        let arr4 = arr.every(function (val) {
+            return val > 5
+        })
+        console.log(arr4)
+        
+    </script>
+
+
+</body>
+</html>

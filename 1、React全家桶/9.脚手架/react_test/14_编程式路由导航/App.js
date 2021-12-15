@@ -1,0 +1,55 @@
+import React, { Component } from 'react'
+import {Route,Switch,Redirect} from 'react-router-dom'
+import Home from './Pages/Home'  //路由组件
+import About from './Pages/About'
+import Header from './Components/Header'   //一般组件
+import MyNavLink from './Components/MyNavLink'
+import './app.css'
+
+export default class App extends Component {
+
+    render() {
+        
+        return (
+            <div >
+              <div>
+                <div className="row">
+                    <div className="col-xs-offset-2 col-xs-8">
+                    <Header />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-xs-2 col-xs-offset-2">
+                    <div className="list-group">
+                        {/* <a className="list-group-item" href="./about.html">About</a>
+                        <a className="list-group-item active" href="./home.html">Home</a> */}
+                      
+                            {/* 路由链接 */}
+                            {/* <NavLink activeClassName="changecolor" className="list-group-item" to='/about'>About</NavLink>
+                            <NavLink activeClassName="changecolor" className="list-group-item" to="/home">Home</NavLink> */}
+
+                            <MyNavLink to='/about' children='About'/>
+                            <MyNavLink to='/home' children='Home'/>
+                           
+                    </div>
+                    </div>
+                    <div className="col-xs-6">
+                    <div className="panel">
+                        <div className="panel-body">
+
+                        {/* 注册路由 */}
+                        <Switch>
+                            <Route path='/about' component={About} />
+                            <Route path='/home' component={Home} /> 
+                            <Redirect to='/about'/>
+                        </Switch>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        )
+    }
+}
+

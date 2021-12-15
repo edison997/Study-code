@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+</head>
+<body>
+    <!-- 
+        1，let具有块级作用域 
+         
+        2，就是大括号的内容
+        
+        3，是var关键字不具备的功能
+
+        4，防止循环变量变成全局变量
+
+        5,不存在变量提升，var声明 会返回undefined
+
+        6，具有暂时性死区的特性
+    -->
+    <script>
+        if(true){
+            let num = 200;
+            var abc = 100;
+
+        }
+        //vae声明的变量是能访问到的，但是let声明的变量是访问不到的
+        console.log(abc);
+        // console.log(num);
+
+        for (var i = 0;i<2;i++){
+
+        }
+        console.log(i)
+
+        // for (let j = 0; j<3 ; j++){
+
+        // }
+        // console.log(j)
+
+        var a ;    
+        if(true){
+            a = 5;
+            let a ;
+        }
+
+        console.log(a)
+    </script>
+</body>
+</html>

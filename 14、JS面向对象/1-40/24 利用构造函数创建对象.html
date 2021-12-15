@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象</title>
+</head>
+<body>
+    <script >
+        //利用new object（）创建
+        let obj1 = new Object();
+
+        //利用字面量
+        let obj2 = {}
+
+        //利用构造函数
+
+        function Obj3(name,age){
+            this.name = name;
+            this.age = age;
+            this.sayName = function(){
+                console.log("111")
+            }
+
+
+        }
+
+        let p = new Obj3("zhangsan",19);
+        p.sayName();
+
+        console.log(p)
+    </script>
+</body>
+</html>

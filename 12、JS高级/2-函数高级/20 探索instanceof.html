@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instancof</title>
+</head>
+<body>
+    <script>
+        /* 
+            1.instanceof是如何判断的？
+                -表达式 A instanceof B
+                -如果函数的显示原型对象在A对象的原型链上，返回true，否则返回false
+            2.Function是通过new产生实例的
+        */
+
+        function Foo(){
+
+        }
+
+        let f1 = new Foo();
+        console.log(f1 instanceof Foo)  //true
+        console.log(f1 instanceof Object)  //true
+
+        
+
+        console.log(Object instanceof Object)  //T
+        console.log(Object instanceof Function) //T
+        console.log( Function instanceof Function)  //T
+        console.log(Function instanceof Object) //T
+
+        function Foo(){
+
+        }
+        console.log(Object instanceof Foo) //F
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.item {
+    width:100%;
+    height: 50px;
+    margin-top: 20px;
+    border: 1px solid #bfa;
+}
+
+.itemBtn {
+    float: right;
+}

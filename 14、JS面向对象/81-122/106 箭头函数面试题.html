@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的面试题</title>
+</head>
+<body>
+    <script>
+        var age =555;
+        var obj = {
+            name:'zs',
+            age:20,
+            say: ()=> {
+                //因为obj没有作用域，所以say的方法是指向window的，所以下面输出的是555
+                console.log(this.age)
+            }
+        }
+
+        obj.say()
+    </script>
+</body>
+</html>

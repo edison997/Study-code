@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>利用递归遍历数据</title>
+    </head>
+
+    <body>
+        <script>
+            let data = [{
+                    id: 1,
+                    name: "家电",
+                    kinds: [{
+                        id: 11,
+                        kname: "冰箱",
+                        kinds:[{
+                            id: 111,
+                            name:"海尔"
+                        },{
+                            id: 222,
+                            name:"美的"
+                        }]
+                    }, {
+                        id: 22,
+                        kname: "洗衣机"
+                    }]
+                },{
+                    id: 2,
+                    name: "服饰"
+                }
+            ]
+
+            //输入id，返回对应的数据
+            //1.利用forEach，遍历每个对象
+
+            function getId(data,id){
+                let obj = {}
+
+                //利用forEach去遍历每个对象如果第一层有这个id就执行if内容，如果没有就执行else if 的内容
+                data.forEach(function(item){
+                    if(item.id === id ){
+                        obj = item //getId(data,id)
+                    }else if(item.kinds && item.kinds.length>0){ //这里是判断是否有这个数组，并且这个数组长度不为0 才能遍历他
+                        //这里递归调用，传入kind这个数组的内容，然后再去执行if的内容，然后判断成立，就不会执行eles if 的内容了，所以在这里不用retrun，因为上面判读成立了，下面就不会进入判断，自动退出了递归
+                        obj = getId(item.kinds,id)
+                    }
+                })
+
+                return obj
+            }
+            // console.log(getId(data,1))
+            // console.log(getId(data,2))
+            console.log(getId(data,11))
+            console.log(getId(data,111))
+        </script>
+    </body>
+
+</html>

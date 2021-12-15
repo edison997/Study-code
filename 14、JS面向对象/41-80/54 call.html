@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call</title>
+</head>
+<body>
+    <script>
+        //作用1：改变this的指向
+        var o = {
+            name: "pink"
+        }
+        function fn(a,b) { 
+            console.log(this)
+            console.log(a*b)
+        }
+
+        fn.call(o,5,7)
+
+        //作用2：继承属性
+
+        function Stu(name,age) {
+            this.name = name
+            this.age = age
+        }
+
+        function S(price,name,age) {
+            Stu.call(this,name,age)
+            this.price = price
+        }
+
+        let a = new S(1,"zs",19)
+        console.log(a)
+    </script>
+</body>
+</html>

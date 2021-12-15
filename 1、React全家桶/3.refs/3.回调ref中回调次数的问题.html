@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> 3.回调ref中回调次数的问题</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            class MyTest extends React.Component {
+                state = {isHot:true}
+                
+                test = () => {
+                    console.log(this)
+                    const {v1} = this
+                    alert(v1.value)
+                }
+
+                //这个方法就是相当于把input的回调写到了这上面来，就不会有null了，但是开发中
+                showInfo = (c) => {
+                    this.v1 = c;
+                    console.log(c)
+                }
+
+                change = () => {
+                    const {isHot} = this.state
+
+                    this.setState({isHot:!isHot})
+                }
+             
+                render(){
+                    const {isHot} = this.state
+                    return (
+                    <div>
+                        <h1>今天天气真好{isHot? "凉爽":"炎热"}</h1>
+                        <input ref={b => {this.v1 = b;console.log(b)}} type="text"/>
+
+
+                        {/*<input ref={this.showInfo} type="text"/>*/}
+                        <br/>
+                        <button onClick={this.test}>提交确定</button>
+                        <button onClick={this.change}>切换天气</button>
+                    </div>    
+                       
+                    )
+                }
+            }
+       
+            
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

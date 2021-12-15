@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+    <script>
+        
+
+        //使用工厂批量创建对象，使用的构造函数都是object类型，无法区分多种不同的类型
+
+
+
+        //构造函数就是一个普通函数，创建方式和普通函数创建没有区别，不同的是构造函数习惯首字母大写
+          
+        //this的指向就是新建的对象
+
+
+        //人
+        function Person (name,age,gender) {
+            
+            this.name = name,
+            this.age = age,
+            this.gender = gender,
+            this,sayName = function(){
+                console.log(this.name)
+            }
+        }
+
+        let p = new Person("www",33,"男")
+        let p1 = new Person("eee",44,"女")
+        let p2 = new Person("rrr",55,"男")
+
+        console.log(p)
+        console.log(p1)
+        console.log(p2)
+
+        // instanceof可以检查一个对象是否是一个对象的实例， 是返回ture，否返回fasle,   所有的对象都是object 的后台，所以所有对象用instanceof检查都会返回true
+        console.log(p instanceof Person)
+        console.log(p instanceof Object)
+        
+
+
+
+        //狗
+        function Dog(){
+
+        }
+    
+
+        let d = new Dog()
+
+        console.log(d)
+        console.log(d instanceof Dog)
+        console.log(d instanceof Person)
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作样式</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color:#bfa;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="../jquery.min.js"></script>
+    <script>
+        //这个是直接打印的他原有的宽度
+        console.log($('div').css('width'))
+
+        //属性名必须加引号，后面的数字可以不加引号(两个写法是一个意思)
+        $('div').css('width','300px')
+        $('div').css('width',300)
+
+        //修改多个属性(复合属性必须是驼峰命名法)
+        $('div').css({'background': 'red','border':'1px solid blue'})
+
+
+        
+    </script>
+</body>
+</html>

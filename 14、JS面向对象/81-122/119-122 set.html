@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+    <script>
+        let s = new Set();
+        console.log(s.size)
+
+        let s1 = new Set([1,2,3]);
+        console.log(s1.size)
+
+        let s2 = new Set([1,1,2,3])
+        console.log(s2.size) //3,自动去重
+
+        //利用拓展运算符去重
+        let arr = [...s2]
+        console.log(arr)
+
+
+        //set方法的增删改查
+
+        const ss = new Set();
+
+        //增加
+        ss.add(1).add(2).add(3);//可以链式调用
+        console.log(ss.size)
+
+        //删除
+        const one = ss.delete(2);
+        console.log(ss.size)
+        console.log(one)
+
+        //查询是否包含
+        const two = ss.has(4)
+        console.log(two)
+        console.log(ss.size)
+
+        //清除所有
+        ss.clear()
+        console.log(ss.size)
+
+        //遍历（和数组的forEach一样）
+        const sr = new Set([1,2,3,4])
+        sr.forEach(val => {
+            console.log(val)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>createRef</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            class MyTest extends React.Component {
+
+                /* 
+                1.通过onXxx属性指定事件处理函数（注意大小写）   
+                    a.React 使用的自定义（合成事件），而不是使用原生DOM事件 ----为了更好的兼容
+                    b.React 中的事件是通过事件委派方式处理的（委托给组件最外层的元素，就像ul绑定事件一样）-----为了高效
+                2.通过event.target 得到发生事件的DOM元素 -----不要过度使用ref
+                
+                */
+
+
+                //Reacat.createRef 调用后可以返回一个容器，该容器可以储存被ref所标识的节点，该容器具有唯一性，谁创建的谁用
+                myref = React.createRef()
+                myref2 = React.createRef()
+                test = () => {
+                  console.log(this.myref)
+                  alert(this.myref.current.value)
+                }
+
+                //只有绑定在本身上的事件才能用event
+                test2 = (e) => {
+                 console.log(e.target.value)
+                }
+
+                render(){
+
+                    return (
+                    <div>
+                        <input ref={this.myref} type="text"/>
+                        <button onClick={this.test}>提交确定</button>
+                        <input  onBlur={this.test2} type="text"/>
+                    </div>
+                       
+                    )
+                }
+            }
+       
+            
+            ReactDOM.render(<MyTest/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

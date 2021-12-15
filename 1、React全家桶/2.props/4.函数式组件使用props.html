@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>函数式组件</title>
+    </head>
+
+    <body>
+        <div id="box"></div>
+    
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js//prop-types.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        
+        <script type="text/babel">
+
+            function Person(props){
+
+                 const {name,age,gender} = props
+                
+                 return (
+                 <ul>
+                     <li>姓名：{name}</li>
+                     <li>年龄：{age+1}</li>
+                     <li>性别：{gender}</li>
+                 </ul>
+                 )
+            }
+
+             //对标签属性进行类型，必要性的限制
+             Person.propTypes = {
+                name:PropTypes.string.isRequired,
+                age:PropTypes.number,
+                gender:PropTypes.string,
+                fn:PropTypes.func
+             }
+             //指定默认标签属性（如果没有这个属性，就是自动加上这个属性。如果有这个属性就加上）
+             Person.defaultProps = {
+                age:18,
+                gender:"人妖"
+             }
+       
+            
+            ReactDOM.render( <Person name="zs"/>,document.getElementById("box"))
+      
+
+          
+        </script>
+    </body>
+
+</html>

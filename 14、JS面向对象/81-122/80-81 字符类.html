@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式字符类</title>
+</head>
+<body>
+    <script>
+        //字符类 []表示一系列字符可供选择，只要匹配其中一个就行了
+
+        let reg = /[abc]/
+        //只要其中包含一个就未真
+        console.log(reg.test('apple')) //ture
+        console.log(reg.test('baby'))  //ture
+        console.log(reg.test('click'))  //ture
+        console.log(reg.test('red'))  //false
+
+        let reg2 = /^[abc]$/
+        //选其中一个字母，才是true。 其他的都是false
+        console.log(reg2.test('a')) //ture
+        console.log(reg2.test('b')) //ture
+        console.log(reg2.test('c')) //ture
+
+        //表示a-z的任意小写，还可以是0-9
+        let reg3 = /^[a-z]$/
+
+        //任意一个大小写字母数字  _  - 都返回的true
+        let reg4 = /^[a-zA-Z0-9_-]$/
+        console.log(reg4.test('Z')) //ture
+        console.log(reg4.test('9')) //ture
+        console.log(reg4.test('_')) //ture
+
+        //在大括号里写了^ 就是表示取反  ，含有这些的内容都是false
+         let reg5 = /^[^a-zA-Z0-9_-]$/
+         console.log(reg5.test('!')) //ture
+         console.log(reg5.test('a')) //false
+
+
+         
+    </script>
+</body>
+</html>

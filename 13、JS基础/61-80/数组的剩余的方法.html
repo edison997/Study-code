@@ -1,0 +1,68 @@
+;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的剩余方法</title>
+    <script>
+        //concat(),连接两个或者多个数组，并将新数组返回,不会对元素组产生影响
+        //join(),可以将数组转换成一个字符串，不会改变原数组
+        //sort(),排序，会影响原数组，默认按照unicode编码进行排序
+        //reverse(),该方法用来反转数组，会改变原数组
+
+
+
+         let arr = [1,2,3,3, 4,5]
+         let arr2 = ["wang","li"]
+         let arr3 = ["true"]
+
+         a = arr.concat(arr2);
+         b = arr.concat(arr2,arr3)
+         //不仅可以川数组，还可以传元素，不会改变原来的数组
+         c = arr.concat(arr2,arr3,"你好啊","新加的")
+         console.log(a)
+         console.log(b)
+         console.log(c)
+
+        // 默认以逗号作为连接符,里面想些什么连接都可以
+        d= arr.join("-")
+        console.log( d)
+
+        //会改变原数组，倒叙
+        e = arr.reverse()
+
+        console.log(e)
+
+        //对数字排序可能会导致错误，因为是根据unicode编码来排序的
+        let my = [3,2,5,3,2,1,22]
+        f = my.sort(function(a,b){
+            // if(a>b){
+            //     return 1
+            // }else if(a<b){
+            //     return -1
+            // }else{
+            //     return 0
+            // }
+            
+
+            //上面的简便方法，  a-b升序   b-a降序
+            // return a-b
+
+            return b-a
+        })
+        console.log(f)
+
+        let m = ["a","b","d","c"]
+        fff = m.sort()
+        console.log(fff)
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

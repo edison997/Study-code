@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM的查询</title>
+</head>
+<body>
+    <p id="bj">北京</p>
+    <button id="btn1">点击获取</button>
+<!-- ==================================================== -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <button id="btn2">获取li数量</button>
+
+<!-- =================================================== -->
+    <div class="inner">
+        <input class="hi" type="radio" name="gender" value="male">
+        <input class="hi" type="radio" name="gender" value="female">
+        <input type="text" name="name" id="username" value="abcde">
+        
+    </div>
+
+    <button id="btn3">获取gender</button>
+
+
+
+    <script>
+
+//innerHTML 可以获取到节点的内容,对自结束标签，如input img  这个是没有作用的
+        let btn1 = document.getElementById("btn1")
+        btn1.onclick = function () { 
+            let bj = document.getElementById("bj")
+            
+            alert(bj.innerHTML)  //着用就能获取到 北京
+         }
+
+
+//查找所有li的节点
+        let btn2 = document.getElementById("btn2")
+        btn2.onclick = function(){
+            //返回的是个类数组，即使一个也会装进数组
+            let lis = document.getElementsByTagName("li")
+
+            alert(lis.length)
+            //获取所有li的值
+            for(let i=0; i<lis.length; i++){
+                console.log(lis[i].innerHTML)
+            }
+        }         
+
+
+
+//查找name=gender的所有节点
+        let btn3 = document.getElementById("btn3")
+        btn3.onclick = function(){
+            let gen = document.getElementsByName("gender")
+            alert(gen.length)
+            for(let i=0;i<gen.length; i++){
+                console.log(gen[i].value)
+                console.log(gen[i].name)
+                console.log(gen[i].type)
+                console.log(gen[i].className)
+            }
+        }
+    </script>
+</body>
+</html>
